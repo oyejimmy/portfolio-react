@@ -1,0 +1,90 @@
+JAMIL UR RAHMAN 
+Islamabad, Pakistan | +92 312-1999-696 | jamirahm@hotmail.com | GitHub | LinkedIn | Portfolio 
+EDUCATION  
+Bahria University 
+Master’s in Data Sciences 
+Relevant Coursework: Machine Learning, Deep Learning, Pattern Recognition, Big Data Analysis, NLP. 
+University of Agriculture, Peshawar 
+Bachelor’s in Computer Science 
+Islamabad, Pakistan 
+Sep 2022 – Sep 2024 
+Peshawar, Pakistan 
+Sep 2017 - Sep 2021 
+Relevant Coursework: Electronics, Software Engineering, Operating Systems, Algorithms, Artificial Intelligence 
+WORK EXPERIENCE  
+SMART FORUM 
+Software Engineer 
+● Leading React.js development across multiple client-facing platforms. 
+● Refactored legacy codebases, improving maintainability and performance by 80%. 
+● Collaborated with cross-functional teams to deliver scalable solutions. 
+Key Technologies: React.js, REST APIs, Git, Code Optimization 
+Junior Software Engineer 
+● Developed front-end modules using React.js and optimized UI performance. 
+● Participated in code reviews and debugging processes, ensuring production quality. 
+● Earned “Employee of the Month” in July 2023 for outstanding performance. 
+Key Skills: CSS, JavaScript, Unit Testing, Agile Teamwork 
+3G TECHNOLOGIES 
+Engineering Intern 
+● Built and tested web components using React.js. 
+● Worked under senior engineers to resolve critical frontend bugs. 
+Key Tools: CSS, JavaScript, Debugging 
+PROJECTS  
+Islamabad, Pakistan 
+Oct 2023 – Present 
+Oct 2021 – Oct 2023 
+Islamabad, Pakistan 
+Sep 2021 – Oct 2021 
+Research Project: Ensemble Deep Learning for Precise Thalassemia Classification in Blood Smear Images 
+Role: Lead Researcher | Tech Stack: Python, TensorFlow, ResNet50, VGG16, MobileNetV2 
+● Designed and implemented an ensemble of CNN models (ResNet50, VGG16, MobileNetV2) for classifying beta-thalassemia 
+from blood smear images. 
+● Achieved a 75.61% validation accuracy using ensemble learning, outperforming all individual models in both precision and 
+stability. 
+● Worked on a dataset of 7,108 erythrocyte images across 9 classes, focusing on clinical relevance and robustness in 
+low-resource environments. 
+● Conducted deep error analysis via confusion matrices and classification reports to reduce false positives in difficult cases like 
+teardrop and elliptocyte cells. 
+● Highlighted for potential real-world deployment to assist in early thalassemia diagnosis in rural clinical setups. 
+Device Identification Registration and Blocking System (DIRBS)—Pakistan Telecommunication Authority 
+Role: Frontend Developer | Tech Stack: React.js, Redux, REST API, Ant Design 
+Link: https://dirbs.pta.gov.pk  
+Present 
+● Contributed to the development and enhancement of the PTA’s DIRBS portal used for IMEI registration and mobile device 
+verification across Pakistan. 
+● Implemented responsive UI components using React.js and Ant Design, improving user flow and accessibility for over a 
+million monthly users. 
+● Integrated and tested 20+ REST API endpoints for device verification and real-time validation, reducing data processing 
+latency by 40% and improving backend reliability across high-traffic user sessions. 
+Research Project: Intelligent Legal Information System—AI-Powered Legal Chatbot for Penal Code Predictions 
+Role: Researcher & Developer | Tech Stack: Python, NLP, AI, Rule-based Systems 
+● Developed a legal chatbot capable of predicting relevant Pakistani penal code sections based on user input about crimes. 
+● Applied NLP techniques to interpret natural language crime descriptions and map them to judicial rulings and legal statutes. 
+● Demonstrated the ability of AI to learn and understand legal language better than traditional rule-based systems. 
+● Project aimed at improving accessibility to legal information and streamlining legal research for both professionals and 
+citizens. 
+ADDITIONAL  
+Technical Skills:  
+● Languages: JavaScript, TypeScript, Python, Java, HTML, CSS, SQL 
+● Frameworks/Libraries: React.js, Redux, TensorFlow, Pandas, NumPy, VGG16, ResNet50, MobileNetV2, Keras 
+● Tools: Git, GitHub, VS Code, Postman, JIRA, Heroku, Figma, Tableau, Microsoft Power BI, Google Data Studio, 
+Oracle Cloud 
+● Platforms: Microsoft 365 Copilot, Microsoft Azure, Google Cloud Platform, Oracle Cloud Infrastructure 
+● Concepts: Agile, Scrum, CI/CD, Data Analysis, Business Intelligence (BI), Data Visualization, DevOps, NLP, Deep 
+Learning, Ensemble Learning, Generative AI, Ethical AI, Cloud Computing, Legal NLP Applications 
+Certifications & Training: Advanced Python Programming—Coursera,  Deep Learning Specialization—Coursera, Advanced 
+Python Programming — Coursera Deep Learning Specialization — Coursera, Oracle Cloud Infrastructure 2023 AI Certified 
+Foundations Associate — Oracle (Credential ID: 312875443OCI23AIFCA), Introduction to Large Language Models — 
+Simplilearn (Credential ID: 7449596), DWH & BI Workshop — Dice Analytics (Power BI, Tableau, Teradata, SQL), Data 
+Visualization with Power BI — Great Learning Academy, DevOps Foundations — LinkedIn Learning, Introduction to Data 
+Studio — Google (Issued Sep 2022, Expires Sep 2025), JIRA Software — LinkedIn Learning, Additional Micro-Certifications & 
+Skill Boosters, Work Smarter, Think Sharper, Live Better: 15 Tips for Igniting Your Potential, Writing with Impact, Career 
+Essentials in GitHub (Professional Certificate), Practical GitHub: Code Search, Actions, Project Management & Collaboration, 
+Train Your Brain to Unwind Stress and Anxiety Habits. Career Essentials in Generative AI — Microsoft & LinkedIn, 
+Streamlining Work with Microsoft Copilot, Learning Microsoft 365 Copilot, Visualizing Your Leadership Journey, Ethics in the 
+Age of Generative AI, Generative AI: The Evolution of Thoughtful Online Search, Generative AI, Tips to Build a Positive 
+Mindset, Nano Tips to Foster a Growth Mindset & Mental Agility — with Shadé Zahrai, Creating a Positive and Healthy 
+Environment, Balancing Work & Life, Ethical, Human-Centered AI Design, Glossary of Terms for Ethical AI, Figma Essential 
+Training: The Basics, Top 10 Skills for FinTech Analytics, Best Language for Data Science, Scrum: The Basics, Introduction to 
+AI (2023), Agile Testing, React Hooks, Learning JIRA Software, DevOps Foundations: Continuous Delivery & Continuous 
+Integration, React: Building Large Apps, Building Modern Projects with React (2020), MySQL Installation and Configuration 
+(2019) 
