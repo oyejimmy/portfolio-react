@@ -1,0 +1,412 @@
+# Software Engineer Portfolio Blueprint
+
+Create a polished, responsive React + TypeScript portfolio with smooth routing, hard-coded content, Ant Design components, and styled-components. This document outlines everything you need—structure, data, styles, components, and pages—to showcase your CV, achievements, education, skills, projects, and contact info in a cohesive way.
+
+---
+
+## 1. Project Overview
+
+This single-page (SPA) portfolio will:
+
+- Highlight your CV, achievements, education, experience, skills, and projects  
+- Use React Router for smooth navigation  
+- Store all content in local `/data` files  
+- Leverage Ant Design for layout + components  
+- Customize look with styled-components  
+- Be fully responsive across devices  
+
+---
+
+## 2. Tech Stack & Libraries
+
+1. React 17+ / TypeScript  
+2. react-router-dom v6  
+3. Ant Design v4  
+4. styled-components  
+5. react-icons (for extra iconography)  
+6. framer-motion (optional: page transitions)  
+7. polished (optional: color utilities)  
+
+Install:
+```bash
+npm install react-router-dom styled-components @types/styled-components antd react-icons framer-motion polished
+```
+
+---
+
+## 3. Folder Structure
+
+```text
+src/
+│
+├── assets/                  # images, icons, CV.pdf
+├── components/              # shared UI components
+│   ├── Navbar.tsx
+│   ├── Footer.tsx
+│   ├── SectionWrapper.tsx
+│   ├── SkillTag.tsx
+│   ├── ProjectCard.tsx
+│   └── AchievementItem.tsx
+│
+├── data/                    # hardcoded content
+│   ├── achievements.ts
+│   ├── education.ts
+│   ├── experience.ts
+│   ├── skills.ts
+│   └── projects.ts
+│
+├── pages/                   # route-based pages
+│   ├── Home.tsx
+│   ├── About.tsx
+│   ├── Achievements.tsx
+│   ├── Education.tsx
+│   ├── Experience.tsx
+│   ├── Skills.tsx
+│   ├── Projects.tsx
+│   └── Contact.tsx
+│
+├── styles/                  # theming & global styles
+│   ├── theme.ts
+│   └── GlobalStyles.ts
+│
+├── App.tsx                  # layout + Router
+├── routes.tsx               # route definitions
+└── index.tsx                # entry point
+```
+
+---
+
+## 4. Routing Setup
+
+Define your routes in a centralized file:
+
+```tsx
+// routes.tsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import Achievements from './pages/Achievements'
+import Education from './pages/Education'
+import Experience from './pages/Experience'
+import Skills from './pages/Skills'
+import Projects from './pages/Projects'
+import Contact from './pages/Contact'
+
+export default function AppRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/achievements" element={<Achievements />} />
+        <Route path="/education" element={<Education />} />
+        <Route path="/experience" element={<Experience />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+```
+
+---
+
+## 5. Design System
+
+### 5.1 Color Palette
+
+| Role             | Token         | Hex      |
+|------------------|---------------|----------|
+| Primary          | `primary`     | #1890ff  |
+| Secondary        | `secondary`   | #13c2c2  |
+| Background Light | `bgLight`     | #f0f2f5  |
+| Background Dark  | `bgDark`      | #ffffff  |
+| Text Primary     | `textPrimary` | #1f1f1f  |
+| Text Secondary   | `textSecondary` | #595959 |
+| Card Shadow      | `shadow`      | rgba(0,0,0,0.1) |
+
+### 5.2 Typography
+
+- Font: `'Segoe UI', 'Roboto', sans-serif`  
+- Headings: 600 weight, 1.2–1.5× line-height  
+- Body: 400 weight, 1.6× line-height  
+
+### 5.3 Theme Object
+
+```ts
+// styles/theme.ts
+export const theme = {
+  colors: {
+    primary: '#1890ff',
+    secondary: '#13c2c2',
+    bgLight: '#f0f2f5',
+    bgDark: '#ffffff',
+    textPrimary: '#1f1f1f',
+    textSecondary: '#595959',
+    shadow: 'rgba(0,0,0,0.1)',
+  },
+  fonts: {
+    body: `'Segoe UI', 'Roboto', sans-serif`,
+    heading: `'Segoe UI', 'Roboto', sans-serif`,
+  },
+  breakpoints: {
+    sm: '576px',
+    md: '768px',
+    lg: '992px',
+  },
+  spacing: {
+    xs: '0.5rem',
+    sm: '1rem',
+    md: '2rem',
+    lg: '3rem',
+  },
+}
+```
+
+### 5.4 Global Styles
+
+Use `createGlobalStyle` to reset margins and apply base styles:
+
+```tsx
+// styles/GlobalStyles.ts
+import { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyles = createGlobalStyle`
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: ${({ theme }) => theme.fonts.body};
+    background: ${({ theme }) => theme.colors.bgLight};
+    color: ${({ theme }) => theme.colors.textPrimary};
+    line-height: 1.6;
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.primary};
+    text-decoration: none;
+  }
+`
+```
+
+---
+
+## 6. Data Models
+
+### 6.1 Achievements
+
+```ts
+// data/achievements.ts
+export interface Achievement {
+  year: string
+  title: string
+  description: string
+}
+
+export const achievements: Achievement[] = [
+  {
+    year: '2023',
+    title: 'Published Thesis on Thalassemia Classification',
+    description: 'Achieved 1st place in university research showcase.',
+  },
+  {
+    year: '2022',
+    title: 'Built HRM System Prototype',
+    description: 'Developed onboarding module in React + TS in 2 weeks.',
+  },
+  // add more...
+]
+```
+
+### 6.2 Education
+
+```ts
+// data/education.ts
+export interface EducationItem {
+  period: string
+  institution: string
+  degree: string
+  details: string
+}
+
+export const education: EducationItem[] = [
+  {
+    period: '2021 – 2023',
+    institution: 'Bahria University, Islamabad',
+    degree: 'MSc Data Science',
+    details: 'Thesis: Ensemble Deep Learning for Thalassemia Classification',
+  },
+  {
+    period: '2017 – 2021',
+    institution: 'University XYZ',
+    degree: 'BSc Computer Science',
+    details: 'Graduated with Honors, 3.8 GPA.',
+  },
+]
+```
+
+### 6.3 Experience
+
+```ts
+// data/experience.ts
+export interface ExperienceItem {
+  period: string
+  role: string
+  company: string
+  responsibilities: string[]
+}
+
+export const experience: ExperienceItem[] = [
+  {
+    period: 'Jan 2022 – Apr 2023',
+    role: 'Science Teacher',
+    company: 'Bilal English Academy',
+    responsibilities: [
+      'Designed interactive curricula',
+      'Mentored 100+ students in STEAM modules',
+    ],
+  },
+  // add software roles once available
+]
+```
+
+### 6.4 Skills
+
+```ts
+// data/skills.ts
+export interface Skill {
+  name: string
+  icon: JSX.Element
+}
+
+export const skills: Skill[] = [
+  { name: 'React', icon: <SiReact /> },
+  { name: 'TypeScript', icon: <SiTypescript /> },
+  { name: 'Ant Design', icon: <SiAntdesign /> },
+  // more...
+]
+```
+
+### 6.5 Projects
+
+```ts
+// data/projects.ts
+export interface Project {
+  title: string
+  description: string
+  tech: string[]
+  link: string
+}
+
+export const projects: Project[] = [
+  {
+    title: 'HRM Dashboard',
+    description: 'Onboarding workflow UI with data tables & charts.',
+    tech: ['React', 'TypeScript', 'Ant Design'],
+    link: 'https://github.com/jamil/hrm-dashboard',
+  },
+  // add 3–5 more projects
+]
+```
+
+---
+
+## 7. Core Components
+
+- **Navbar**: logo + links, highlights current route  
+- **Footer**: social icons, copyright  
+- **SectionWrapper**: consistent padding + background  
+- **AchievementItem**: timeline entry design  
+- **EducationItem**: timeline card  
+- **ExperienceCard**: collapsible details list  
+- **SkillTag**: pill-shaped label with icon  
+- **ProjectCard**: Ant Design `Card` with tech `Tag`s  
+- **DownloadCVButton**: primary button linking PDF  
+
+---
+
+## 8. Page Structure
+
+### 8.1 Home
+
+- Full-screen hero with name, title, CTA to About  
+- Background: subtle gradient (primary → secondary)  
+- Quick-link icons (GitHub, LinkedIn, Download CV)  
+
+### 8.2 About
+
+- Your story: two paragraphs of mission + approach  
+- Key metrics (years of experience, projects built) in Ant Design `Statistic`  
+
+### 8.3 Achievements
+
+- Vertical timeline using styled `AchievementItem`  
+- Year badges with accent color  
+
+### 8.4 Education
+
+- Two-column timeline on desktop, single on mobile  
+- Institution logo + details  
+
+### 8.5 Experience
+
+- Accordion list of roles with responsibilities  
+
+### 8.6 Skills
+
+- Responsive grid of `SkillTag` components  
+- Categorize: “Languages,” “Frameworks,” “Tools”  
+
+### 8.7 Projects
+
+- Filter bar (Ant Design `Select`) by tech tag  
+- Masonry or grid layout of `ProjectCard`  
+
+### 8.8 Contact
+
+- Simple form (name, email, message)  
+- Submit triggers `mailto:` or copy email to clipboard + toast  
+- Map or illustration (optional)  
+
+---
+
+## 9. Responsive & Accessibility
+
+- Use Ant Design grid (`Row`/`Col`) with breakpoints  
+- Media queries in styled-components for custom tweaks  
+- Alt text for all images  
+- `aria-label` on buttons and links  
+- Sufficient color contrast (WCAG AA)  
+
+---
+
+## 10. Development Workflow
+
+1. Scaffold with Vite or Create React App (TS template)  
+2. Install dependencies & apply theme  
+3. Build global layout (Navbar, Footer, Routes)  
+4. Implement data files + types  
+5. Create SectionWrapper + core components  
+6. Develop pages one by one (static data → map to components)  
+7. Add responsiveness and test on Chrome dev tools  
+8. Integrate animations (framer-motion) for page transitions  
+9. SEO: meta tags in `public/index.html`  
+10. Deploy to Vercel or GitHub Pages  
+
+---
+
+## 11. Final Checklist
+
+- [ ] All sections present: Home, About, Achievements, Education, Experience, Skills, Projects, Contact  
+- [ ] CV download link works  
+- [ ] Color palette consistent across components  
+- [ ] Smooth routing + scroll restoration  
+- [ ] Mobile / tablet / desktop tested  
+- [ ] Accessibility audit passed  
+
+---
+
+You now have a complete, standard portfolio blueprint. Follow this document step-by-step to build a standout React + TypeScript front end that showcases everything you want clients to see. Good luck, and let me know when you’re ready for code scaffolding or UI mockups!
