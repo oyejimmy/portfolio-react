@@ -14,7 +14,7 @@ const NAVIGATION_ITEMS = [
   { path: "#skills", label: "Skills" },
   { path: "#projects", label: "Projects" },
   { path: "#certificates", label: "Certificates" },
-  { path: "#contact", label: "Contact" }
+  { path: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -25,23 +25,26 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
+
       // Update active section based on scroll position
-      const sections = NAVIGATION_ITEMS.map(item => item.path.slice(1));
+      const sections = NAVIGATION_ITEMS.map((item) => item.path.slice(1));
       const scrollPosition = window.scrollY + 100;
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section);
             break;
           }
         }
       }
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -49,9 +52,9 @@ export default function Navbar() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId.slice(1));
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
     }
     setIsOpen(false);
@@ -62,11 +65,9 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav 
+    <motion.nav
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? "glass-card shadow-2xl" 
-          : "bg-white/80 backdrop-blur-sm"
+        scrolled ? "glass-card shadow-2xl" : "bg-white/80 backdrop-blur-sm"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -74,13 +75,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <motion.div 
+          <motion.div
             className="flex items-center"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <button 
+            <button
               onClick={() => scrollToSection("#home")}
               className="flex items-center group cursor-pointer"
             >
@@ -90,25 +90,25 @@ export default function Navbar() {
                 </div>
                 <motion.div
                   className="absolute inset-0 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 opacity-20"
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.2, 1],
-                    opacity: [0.2, 0.4, 0.2]
+                    opacity: [0.2, 0.4, 0.2],
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 2,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 />
               </div>
               <div className="ml-3">
-                <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">Jamil Rahman</span>
-                <div className="text-sm text-slate-600">Full-Stack Developer</div>
+                <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-900 bg-clip-text text-transparent">
+                  {"              "} {"              "}
+                </span>
               </div>
             </button>
           </motion.div>
-          
-          {/* Desktop Navigation */}
+
           <div className="hidden lg:flex items-center space-x-8">
             {NAVIGATION_ITEMS.map((item, index) => (
               <motion.div
@@ -120,14 +120,16 @@ export default function Navbar() {
                 <button
                   onClick={() => scrollToSection(item.path)}
                   className={`nav-link text-slate-600 hover:text-indigo-600 transition-all duration-300 ${
-                    isActive(item.path) ? "active text-indigo-600 font-semibold" : ""
+                    isActive(item.path)
+                      ? "active text-indigo-600 font-semibold"
+                      : ""
                   }`}
                 >
                   {item.label}
                 </button>
               </motion.div>
             ))}
-            
+
             {/* Social Links */}
             <div className="flex items-center space-x-3 ml-6 border-l border-slate-200 pl-6">
               <motion.a
@@ -162,7 +164,7 @@ export default function Navbar() {
               </motion.a>
             </div>
           </div>
-          
+
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -176,18 +178,25 @@ export default function Navbar() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[320px] bg-white/95 backdrop-blur-xl border-l border-indigo-200">
+            <SheetContent
+              side="right"
+              className="w-[320px] bg-white/95 backdrop-blur-xl border-l border-indigo-200"
+            >
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-center py-6 border-b border-indigo-100">
                   <div className="text-center">
                     <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-2xl mx-auto mb-3 glow-effect">
                       JR
                     </div>
-                    <div className="font-semibold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">Jamil Rahman</div>
-                    <div className="text-sm text-slate-600">Full-Stack Developer</div>
+                    <div className="font-semibold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                      Jamil Ur Rahman
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      Full-Stack Developer
+                    </div>
                   </div>
                 </div>
-                
+
                 <nav className="flex-1 py-8">
                   <div className="space-y-4">
                     {NAVIGATION_ITEMS.map((item, index) => (
@@ -200,8 +209,8 @@ export default function Navbar() {
                         <button
                           onClick={() => scrollToSection(item.path)}
                           className={`block w-full text-left py-3 px-4 rounded-xl transition-all duration-300 ${
-                            isActive(item.path) 
-                              ? "bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 font-semibold" 
+                            isActive(item.path)
+                              ? "bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 font-semibold"
                               : "text-slate-600 hover:bg-slate-50 hover:text-indigo-600"
                           }`}
                         >
@@ -211,7 +220,7 @@ export default function Navbar() {
                     ))}
                   </div>
                 </nav>
-                
+
                 <div className="border-t border-indigo-100 pt-6 pb-4">
                   <div className="flex justify-center space-x-4 mb-4">
                     <a

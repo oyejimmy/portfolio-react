@@ -83,7 +83,7 @@ export default function About() {
                       <div className="text-4xl font-bold text-white">JR</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-white mb-1">Jamil Rahman</div>
+                      <div className="text-2xl font-bold text-white mb-1">Jamil Ur Rahman</div>
                       <div className="text-white/80 text-sm">Software Engineer</div>
                       <div className="text-white/60 text-xs">Data Science Specialist</div>
                     </div>

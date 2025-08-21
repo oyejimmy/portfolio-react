@@ -14,21 +14,21 @@ export default function Home() {
       href: SOCIAL_LINKS.github,
       icon: Github,
       label: "GitHub Profile",
-      color: "hover:bg-gray-700"
+      color: "hover:bg-gray-700",
     },
     {
       href: SOCIAL_LINKS.linkedin,
       icon: Linkedin,
-      label: "LinkedIn Profile", 
-      color: "hover:bg-blue-700"
+      label: "LinkedIn Profile",
+      color: "hover:bg-blue-700",
     },
     {
       href: "/cv.pdf",
       icon: Download,
       label: "Download CV",
       color: "hover:bg-purple-700",
-      download: true
-    }
+      download: true,
+    },
   ];
 
   return (
@@ -80,7 +80,7 @@ export default function Home() {
             delay: 10,
           }}
         />
-        
+
         {/* Sparkle effects */}
         {[...Array(12)].map((_, i) => (
           <motion.div
@@ -106,12 +106,12 @@ export default function Home() {
         {/* Gradient mesh overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5" />
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Profile Image Section */}
           <FadeIn direction="left" className="order-2 lg:order-1">
-            <motion.div 
+            <motion.div
               className="relative mx-auto lg:mx-0 w-96 h-96 rounded-3xl overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -126,13 +126,19 @@ export default function Home() {
                       <div className="text-6xl font-bold text-white">JR</div>
                     </div>
                     <div className="px-8">
-                      <h3 className="text-2xl font-bold text-slate-800 mb-2">Jamil Rahman</h3>
-                      <p className="text-lg text-slate-600 mb-2">Full-Stack Developer</p>
-                      <p className="text-sm text-slate-500">Data Science • AI/ML • Web Development</p>
+                      <h3 className="text-2xl font-bold text-slate-800 mb-2">
+                        Jamil Ur Rahman
+                      </h3>
+                      <p className="text-lg text-slate-600 mb-2">
+                        Full-Stack Developer
+                      </p>
+                      <p className="text-sm text-slate-500">
+                        Data Science • AI/ML • Web Development
+                      </p>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Floating elements around image */}
                 <motion.div
                   className="absolute top-4 right-4 w-3 h-3 bg-yellow-300 rounded-full"
@@ -160,7 +166,7 @@ export default function Home() {
                   }}
                 />
               </div>
-              
+
               {/* Glow effect */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-400/50 via-blue-500/50 to-purple-600/50 blur-xl -z-10 animate-pulse" />
             </motion.div>
@@ -171,20 +177,24 @@ export default function Home() {
             <FadeIn direction="up" delay={0.2}>
               <div className="inline-flex items-center px-6 py-3 rounded-full bg-indigo-100/80 backdrop-blur-sm border border-indigo-200 mb-8">
                 <Sparkles className="w-5 h-5 mr-3 text-indigo-600" />
-                <span className="text-sm font-medium text-indigo-700">Available for new opportunities</span>
+                <span className="text-sm font-medium text-indigo-700">
+                  Available for new opportunities
+                </span>
               </div>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.4}>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
                 <span className="block text-slate-800">Hi, I'm</span>
-                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">{personalInfo.name}</span>
+                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">
+                  {personalInfo.name}
+                </span>
               </h1>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.6}>
               <div className="text-2xl md:text-3xl mb-8 text-slate-700 min-h-[3rem]">
-                <TypingAnimation 
+                <TypingAnimation
                   text="Full-Stack Developer & Data Scientist"
                   duration={80}
                 />
@@ -193,26 +203,33 @@ export default function Home() {
 
             <FadeIn direction="up" delay={0.8}>
               <p className="text-lg mb-12 max-w-2xl mx-auto lg:mx-0 text-slate-600 leading-relaxed">
-                I craft exceptional digital experiences with modern web technologies, machine learning, and data-driven insights. Passionate about building scalable applications that make a difference.
+                I craft exceptional digital experiences with modern web
+                technologies, machine learning, and data-driven insights.
+                Passionate about building scalable applications that make a
+                difference.
               </p>
             </FadeIn>
-            
+
             {/* Enhanced CTA Buttons */}
             <FadeIn direction="up" delay={1.0}>
               <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12">
                 <motion.div
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(99, 102, 241, 0.4)"
+                    boxShadow: "0 20px 40px rgba(99, 102, 241, 0.4)",
                   }}
                   whileTap={{ scale: 0.95 }}
                   className="relative group"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="relative w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-2xl shadow-lg border-0"
-                    onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() =>
+                      document
+                        .getElementById("about")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
                   >
                     <span className="flex items-center space-x-2">
                       <span>Learn More About Me</span>
@@ -225,21 +242,25 @@ export default function Home() {
                     </span>
                   </Button>
                 </motion.div>
-                
+
                 <motion.div
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(168, 85, 247, 0.4)"
+                    boxShadow: "0 20px 40px rgba(168, 85, 247, 0.4)",
                   }}
                   whileTap={{ scale: 0.95 }}
                   className="relative group"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="lg"
                     className="relative w-full sm:w-auto border-2 border-purple-300 text-slate-800 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:text-white hover:border-purple-600 px-8 py-6 text-lg font-semibold rounded-2xl bg-white/90 backdrop-blur-sm transition-all duration-300"
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() =>
+                      document
+                        .getElementById("contact")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
                   >
                     <span className="flex items-center space-x-2">
                       <span>Get In Touch</span>
@@ -254,7 +275,7 @@ export default function Home() {
                 </motion.div>
               </div>
             </FadeIn>
-            
+
             {/* Social Links */}
             <FadeIn direction="up" delay={1.2}>
               <div className="flex justify-center lg:justify-start space-x-4">
@@ -264,8 +285,14 @@ export default function Home() {
                     <motion.a
                       key={social.label}
                       href={social.href}
-                      target={social.href.startsWith("http") ? "_blank" : undefined}
-                      rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      target={
+                        social.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        social.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       download={social.download}
                       className={`p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white ${social.color} transition-all duration-300 group`}
                       whileHover={{ scale: 1.1, y: -2 }}
@@ -288,7 +315,7 @@ export default function Home() {
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
                 {/* Enhanced glow effects */}
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-400/40 to-purple-400/40 blur-2xl -z-10"
                   animate={{
                     scale: [1, 1.1, 1],
@@ -300,9 +327,9 @@ export default function Home() {
                     ease: "easeInOut",
                   }}
                 />
-                
+
                 <motion.div
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
                     rotateY: 5,
                   }}
@@ -313,30 +340,38 @@ export default function Home() {
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-1">
                     <div className="w-full h-full rounded-3xl bg-white p-2">
                       <img
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face"
-                        alt="Jamil Rahman"
+                        src="https://avatars.githubusercontent.com/u/112857745?s=400&u=1efd2b97dadb9a42fc9855a02a9707b72f8442a5&v=4"
+                        alt="Jamil Ur Rahman"
                         className="w-80 h-80 md:w-96 md:h-96 rounded-2xl object-cover"
                       />
                     </div>
                   </div>
-                  
+
                   {/* Orbiting elements */}
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
                     className="absolute inset-0 pointer-events-none"
                   >
                     <div className="absolute -top-4 left-1/2 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full shadow-lg"></div>
                   </motion.div>
-                  
+
                   <motion.div
                     animate={{ rotate: -360 }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    transition={{
+                      duration: 15,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
                     className="absolute inset-0 pointer-events-none"
                   >
                     <div className="absolute top-1/2 -right-4 w-6 h-6 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full shadow-lg"></div>
                   </motion.div>
-                  
+
                   {/* Enhanced floating badge */}
                   <motion.div
                     initial={{ opacity: 0, y: 20, scale: 0 }}
@@ -346,12 +381,14 @@ export default function Home() {
                     className="absolute -bottom-6 -right-6 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl p-4 shadow-xl border-2 border-white"
                   >
                     <div className="flex items-center space-x-3">
-                      <motion.div 
+                      <motion.div
                         className="w-3 h-3 bg-white rounded-full"
                         animate={{ scale: [1, 1.3, 1] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       />
-                      <span className="text-sm font-semibold text-white">Available for hire</span>
+                      <span className="text-sm font-semibold text-white">
+                        Available for hire
+                      </span>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -362,12 +399,12 @@ export default function Home() {
 
         {/* Scroll indicator */}
         <FadeIn direction="up" delay={1.6}>
-          <motion.div 
+          <motion.div
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <div className="flex flex-col items-center text-white/70">
+            <div className="flex flex-col items-center text-red/70">
               <span className="text-sm mb-2">Scroll to explore</span>
               <ArrowDown className="w-5 h-5" />
             </div>

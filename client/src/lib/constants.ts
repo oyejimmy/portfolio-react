@@ -10,9 +10,9 @@ export const NAVIGATION_ITEMS = [
 ] as const;
 
 export const SOCIAL_LINKS = {
-  github: "https://github.com/jamilurahman",
+  github: "https://github.com/oyejimmy",
   linkedin: "https://www.linkedin.com/in/jamilurahman/",
-  email: "jamil.rahman@example.com"
+  email: "jamirahm2@gmail.com",
 } as const;
 
 export const PROJECT_CATEGORIES = [

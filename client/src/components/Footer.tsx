@@ -10,20 +10,20 @@ export default function Footer() {
       href: SOCIAL_LINKS.github,
       icon: Github,
       label: "GitHub",
-      color: "hover:text-gray-300"
+      color: "hover:text-gray-300",
     },
     {
       href: SOCIAL_LINKS.linkedin,
       icon: Linkedin,
       label: "LinkedIn",
-      color: "hover:text-blue-300"
+      color: "hover:text-blue-300",
     },
     {
       href: `mailto:${SOCIAL_LINKS.email}`,
       icon: Mail,
       label: "Email",
-      color: "hover:text-purple-300"
-    }
+      color: "hover:text-purple-300",
+    },
   ];
 
   return (
@@ -31,7 +31,7 @@ export default function Footer() {
       {/* Animated background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4xIi8+Cjwvc3ZnPgo=')] opacity-20"></div>
-        
+
         {/* Floating elements */}
         <motion.div
           className="absolute top-20 left-10 w-2 h-2 bg-purple-400 rounded-full opacity-60"
@@ -76,15 +76,17 @@ export default function Footer() {
                   JR
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gradient">Jamil Rahman</h3>
+                  <h3 className="text-2xl font-bold text-gradient">
+                    Jamil Ur Rahman
+                  </h3>
                   <p className="text-gray-300 text-sm">Software Engineer</p>
                 </div>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Passionate about creating innovative solutions through code. 
+                Passionate about creating innovative solutions through code.
                 Building the future, one line at a time.
               </p>
-              
+
               {/* Social Links */}
               <div className="flex justify-center lg:justify-start space-x-4">
                 {socialLinks.map((social, index) => {
@@ -93,8 +95,14 @@ export default function Footer() {
                     <motion.a
                       key={social.label}
                       href={social.href}
-                      target={social.href.startsWith("http") ? "_blank" : undefined}
-                      rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      target={
+                        social.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        social.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className={`p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-gray-300 ${social.color} transition-all duration-300 hover:bg-white/20 hover:transform hover:scale-110`}
                       whileHover={{ y: -2 }}
                       whileTap={{ scale: 0.95 }}
@@ -118,7 +126,9 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center lg:text-left"
             >
-              <h4 className="text-lg font-semibold mb-6 text-gradient">Quick Links</h4>
+              <h4 className="text-lg font-semibold mb-6 text-gradient">
+                Quick Links
+              </h4>
               <div className="grid grid-cols-2 gap-2">
                 {NAVIGATION_ITEMS.map((item, index) => (
                   <motion.a
@@ -145,23 +155,38 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-center lg:text-left"
             >
-              <h4 className="text-lg font-semibold mb-6 text-gradient">Let's Connect</h4>
+              <h4 className="text-lg font-semibold mb-6 text-gradient">
+                Let's Connect
+              </h4>
               <div className="space-y-4">
                 <div className="flex items-center justify-center lg:justify-start text-gray-300">
                   <Mail className="w-4 h-4 mr-3 text-purple-400" />
-                  <a href={`mailto:${SOCIAL_LINKS.email}`} className="hover:text-white transition-colors">
+                  <a
+                    href={`mailto:${SOCIAL_LINKS.email}`}
+                    className="hover:text-white transition-colors"
+                  >
                     {SOCIAL_LINKS.email}
                   </a>
                 </div>
                 <div className="flex items-center justify-center lg:justify-start text-gray-300">
                   <Github className="w-4 h-4 mr-3 text-gray-400" />
-                  <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  <a
+                    href={SOCIAL_LINKS.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
                     GitHub Profile
                   </a>
                 </div>
                 <div className="flex items-center justify-center lg:justify-start text-gray-300">
                   <Linkedin className="w-4 h-4 mr-3 text-blue-400" />
-                  <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  <a
+                    href={SOCIAL_LINKS.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
                     LinkedIn Profile
                   </a>
                 </div>
@@ -179,7 +204,7 @@ export default function Footer() {
           >
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-gray-300 text-sm mb-4 md:mb-0 flex items-center">
-                <span>© {currentYear} Jamil Rahman. Built with</span>
+                <span>© {currentYear} Jamil Ur Rahman. Built with</span>
                 <Heart className="w-4 h-4 mx-2 text-red-400 animate-pulse" />
                 <span>using</span>
                 <Code className="w-4 h-4 mx-2 text-blue-400" />
