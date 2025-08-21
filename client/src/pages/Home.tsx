@@ -33,10 +33,78 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center relative overflow-hidden">
-      {/* Simplified background elements for performance */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-96 h-96 rounded-full opacity-5 bg-gradient-to-br from-indigo-400 to-purple-400 top-10 left-10"></div>
-        <div className="absolute w-64 h-64 rounded-full opacity-5 bg-gradient-to-br from-blue-400 to-indigo-400 bottom-20 right-10"></div>
+      {/* Enhanced animated background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Floating orbs with smooth animations */}
+        <motion.div
+          className="absolute w-72 h-72 rounded-full opacity-20 bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400"
+          style={{ top: "10%", left: "5%" }}
+          animate={{
+            x: [0, 50, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-96 h-96 rounded-full opacity-15 bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-400"
+          style={{ top: "60%", right: "10%" }}
+          animate={{
+            x: [0, -40, 0],
+            y: [0, 40, 0],
+            scale: [1, 0.8, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 5,
+          }}
+        />
+        <motion.div
+          className="absolute w-48 h-48 rounded-full opacity-25 bg-gradient-to-br from-purple-400 via-pink-400 to-rose-400"
+          style={{ top: "30%", right: "20%" }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, -20, 0],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 10,
+          }}
+        />
+        
+        {/* Sparkle effects */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-white rounded-full opacity-60"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              delay: i * 0.5,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+
+        {/* Gradient mesh overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5" />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -129,38 +197,61 @@ export default function Home() {
               </p>
             </FadeIn>
             
-            {/* CTA Buttons */}
+            {/* Enhanced CTA Buttons */}
             <FadeIn direction="up" delay={1.0}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <Link href="/about">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full sm:w-auto"
+              <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12">
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(99, 102, 241, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative group"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                  <Button 
+                    size="lg" 
+                    className="relative w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-2xl shadow-lg border-0"
+                    onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
                   >
-                    <Button 
-                      size="lg" 
-                      className="w-full sm:w-auto bg-white text-purple-700 hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      Learn More About Me
-                    </Button>
-                  </motion.div>
-                </Link>
-                <Link href="/contact">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full sm:w-auto"
+                    <span className="flex items-center space-x-2">
+                      <span>Learn More About Me</span>
+                      <motion.div
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        →
+                      </motion.div>
+                    </span>
+                  </Button>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(168, 85, 247, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative group"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    className="relative w-full sm:w-auto border-2 border-purple-300 text-slate-800 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:text-white hover:border-purple-600 px-8 py-6 text-lg font-semibold rounded-2xl bg-white/90 backdrop-blur-sm transition-all duration-300"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   >
-                    <Button 
-                      variant="outline" 
-                      size="lg"
-                      className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-purple-700 px-8 py-6 text-lg font-semibold rounded-xl backdrop-blur-sm bg-white/10 hover:bg-white transition-all duration-300"
-                    >
-                      Get In Touch
-                    </Button>
-                  </motion.div>
-                </Link>
+                    <span className="flex items-center space-x-2">
+                      <span>Get In Touch</span>
+                      <motion.div
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        ✨
+                      </motion.div>
+                    </span>
+                  </Button>
+                </motion.div>
               </div>
             </FadeIn>
             
@@ -191,6 +282,82 @@ export default function Home() {
               </div>
             </FadeIn>
           </div>
+
+          {/* Enhanced Profile Image Section */}
+          <FadeIn direction="right" delay={1.2}>
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                {/* Enhanced glow effects */}
+                <motion.div 
+                  className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-400/40 to-purple-400/40 blur-2xl -z-10"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotateY: 5,
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="relative group"
+                  style={{ perspective: "1000px" }}
+                >
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-1">
+                    <div className="w-full h-full rounded-3xl bg-white p-2">
+                      <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face"
+                        alt="Jamil Rahman"
+                        className="w-80 h-80 md:w-96 md:h-96 rounded-2xl object-cover"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Orbiting elements */}
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 pointer-events-none"
+                  >
+                    <div className="absolute -top-4 left-1/2 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full shadow-lg"></div>
+                  </motion.div>
+                  
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 pointer-events-none"
+                  >
+                    <div className="absolute top-1/2 -right-4 w-6 h-6 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full shadow-lg"></div>
+                  </motion.div>
+                  
+                  {/* Enhanced floating badge */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 2, duration: 0.5, type: "spring" }}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    className="absolute -bottom-6 -right-6 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl p-4 shadow-xl border-2 border-white"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <motion.div 
+                        className="w-3 h-3 bg-white rounded-full"
+                        animate={{ scale: [1, 1.3, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
+                      <span className="text-sm font-semibold text-white">Available for hire</span>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
 
         {/* Scroll indicator */}

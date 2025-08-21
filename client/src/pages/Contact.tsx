@@ -1,5 +1,6 @@
 import { useState } from "react";
-import SectionWrapper from "@/components/SectionWrapper";
+import { motion } from "framer-motion";
+import { FadeIn } from "@/components/ui/fade-in";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -92,22 +93,34 @@ export default function Contact() {
   ];
 
   return (
-    <SectionWrapper>
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
-        <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
-        <p className="text-lg text-portfolio-secondary max-w-2xl mx-auto">
-          I'm always interested in new opportunities and collaborations. 
-          Whether you have a project in mind or just want to say hello, feel free to reach out!
-        </p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mb-6"
+            >
+              <Mail className="w-8 h-8 text-white" />
+            </motion.div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              Get In Touch
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              I'm always interested in new opportunities and exciting projects. Let's connect and discuss how we can work together.
+            </p>
+          </div>
+        </FadeIn>
       
-      <div className="grid lg:grid-cols-2 gap-12">
-        {/* Contact Information */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-8">Let's Connect</h3>
-          
-          <div className="space-y-6 mb-8">
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Information */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-8">Let's Connect</h3>
+            
+            <div className="space-y-6 mb-8">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon;
               return (
@@ -133,17 +146,17 @@ export default function Contact() {
                 </div>
               );
             })}
+            </div>
+            
+            {/* Download CV Button */}
+            <Button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 px-8 py-3 rounded-xl font-semibold shadow-lg">
+              <Download className="mr-2 h-4 w-4" />
+              Download CV
+            </Button>
           </div>
           
-          {/* Download CV Button */}
-          <Button className="bg-primary text-white hover:bg-blue-600 px-8 py-3 rounded-lg font-semibold">
-            <Download className="mr-2 h-4 w-4" />
-            Download CV
-          </Button>
-        </div>
-        
-        {/* Contact Form */}
-        <Card className="bg-white card-shadow">
+          {/* Contact Form */}
+          <Card className="bg-white shadow-lg border border-slate-200 rounded-2xl">
           <CardContent className="p-8">
             <form onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -224,14 +237,90 @@ export default function Contact() {
               
               <Button 
                 type="submit" 
-                className="w-full bg-primary text-white hover:bg-blue-600 px-8 py-3 rounded-lg font-semibold"
+                className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 px-8 py-3 rounded-xl font-semibold shadow-lg"
               >
                 Send Message
               </Button>
             </form>
           </CardContent>
-        </Card>
+          </Card>
+        </div>
+      
+      {/* Location Map Section */}
+      <div className="mt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
+        >
+          <h3 className="text-3xl font-bold text-slate-800 mb-4">Find Me Here</h3>
+          <p className="text-slate-600 max-w-2xl mx-auto">
+            Based in Islamabad, Pakistan - Open to remote work and collaborations worldwide
+          </p>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative bg-white rounded-3xl p-4 shadow-lg border border-slate-200 overflow-hidden"
+        >
+          {/* Map Container */}
+          <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212270.5667958663!2d72.82079822539756!3d33.61619864894985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbfd07891722f%3A0x6059515c3bdb02b4!2sIslamabad%2C%20Islamabad%20Capital%20Territory%2C%20Pakistan!5e0!3m2!1sen!2s!4v1699123456789!5m2!1sen!2s"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="rounded-2xl"
+              title="Islamabad, Pakistan Location"
+            />
+            
+            {/* Location marker overlay */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 1, duration: 0.5, type: "spring" }}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full pointer-events-none"
+            >
+              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full shadow-lg">
+                <div className="flex items-center space-x-2">
+                  <MapPin className="w-4 h-4" />
+                  <span className="text-sm font-semibold">Islamabad, Pakistan</span>
+                </div>
+              </div>
+              <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-indigo-600 mx-auto"></div>
+            </motion.div>
+          </div>
+          
+          {/* Location Info Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-slate-200"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="font-semibold text-slate-800">Current Location</h4>
+                <p className="text-sm text-slate-600">Islamabad, Pakistan (GMT+5)</p>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm text-slate-600">Available for remote work</span>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </SectionWrapper>
+      </div>
+    </div>
   );
 }
