@@ -14,6 +14,7 @@ const NAVIGATION_ITEMS = [
   { path: "#skills", label: "Skills" },
   { path: "#projects", label: "Projects" },
   { path: "#certificates", label: "Certificates" },
+  { path: "#location", label: "Location" },
   { path: "#contact", label: "Contact" },
 ];
 

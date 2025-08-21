@@ -1,9 +1,11 @@
+import { useState, useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Loader from "@/components/Loader";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Achievements from "@/pages/Achievements";
@@ -13,8 +15,24 @@ import Skills from "@/pages/Skills";
 import Projects from "@/pages/Projects";
 import Contact from "@/pages/Contact";
 import Certificates from "@/pages/Certificates";
+import Location from "@/pages/Location";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate initial loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loader isLoading={isLoading} />;
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -44,6 +62,9 @@ function App() {
             </section>
             <section id="certificates" className="section-padding">
               <Certificates />
+            </section>
+            <section id="location" className="section-padding">
+              <Location />
             </section>
             <section id="contact" className="section-padding">
               <Contact />
