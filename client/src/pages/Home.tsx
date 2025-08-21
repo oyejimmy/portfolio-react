@@ -32,21 +32,72 @@ export default function Home() {
   ];
 
   return (
-    <AnimatedBackground className="hero-gradient min-h-screen flex items-center justify-center text-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center relative overflow-hidden">
+      {/* Floating background elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          className="absolute w-96 h-96 rounded-full opacity-10"
+          style={{
+            background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+            top: "10%",
+            left: "5%",
+          }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-64 h-64 rounded-full opacity-8"
+          style={{
+            background: "linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)",
+            top: "60%",
+            right: "10%",
+          }}
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 20, 0],
+            scale: [1, 0.9, 1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Profile Image Section */}
           <FadeIn direction="left" className="order-2 lg:order-1">
             <motion.div 
-              className="relative mx-auto lg:mx-0 w-80 h-80 rounded-3xl overflow-hidden"
-              whileHover={{ scale: 1.05 }}
+              className="relative mx-auto lg:mx-0 w-96 h-96 rounded-3xl overflow-hidden"
+              whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               {/* Professional Profile Image */}
-              <div className="w-full h-full bg-gradient-to-br from-purple-400 via-blue-500 to-purple-600 flex items-center justify-center relative">
-                {/* Placeholder professional silhouette */}
-                <div className="w-64 h-64 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-4 border-white/30">
-                  <div className="text-6xl font-bold text-white">JR</div>
+              <div className="w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center relative border border-slate-200 shadow-2xl">
+                {/* Professional dummy portrait */}
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-50">
+                  <div className="text-center">
+                    {/* Professional avatar placeholder */}
+                    <div className="w-48 h-48 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center mx-auto mb-4 shadow-xl">
+                      <div className="text-6xl font-bold text-white">JR</div>
+                    </div>
+                    <div className="px-8">
+                      <h3 className="text-2xl font-bold text-slate-800 mb-2">Jamil Rahman</h3>
+                      <p className="text-lg text-slate-600 mb-2">Full-Stack Developer</p>
+                      <p className="text-sm text-slate-500">Data Science • AI/ML • Web Development</p>
+                    </div>
+                  </div>
                 </div>
                 
                 {/* Floating elements around image */}
@@ -85,31 +136,31 @@ export default function Home() {
           {/* Content Section */}
           <div className="text-center lg:text-left order-1 lg:order-2">
             <FadeIn direction="up" delay={0.2}>
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
-                <Sparkles className="w-4 h-4 mr-2 text-yellow-300" />
-                <span className="text-sm font-medium">Available for new opportunities</span>
+              <div className="inline-flex items-center px-6 py-3 rounded-full bg-indigo-100/80 backdrop-blur-sm border border-indigo-200 mb-8">
+                <Sparkles className="w-5 h-5 mr-3 text-indigo-600" />
+                <span className="text-sm font-medium text-indigo-700">Available for new opportunities</span>
               </div>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.4}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                <span className="block">Hi, I'm</span>
-                <span className="text-gradient">{personalInfo.name}</span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+                <span className="block text-slate-800">Hi, I'm</span>
+                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">{personalInfo.name}</span>
               </h1>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.6}>
-              <div className="text-xl md:text-2xl mb-8 opacity-90 min-h-[3rem]">
+              <div className="text-2xl md:text-3xl mb-8 text-slate-700 min-h-[3rem]">
                 <TypingAnimation 
-                  text={personalInfo.title}
+                  text="Full-Stack Developer & Data Scientist"
                   duration={80}
                 />
               </div>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.8}>
-              <p className="text-lg mb-12 max-w-2xl mx-auto lg:mx-0 opacity-80 leading-relaxed">
-                {personalInfo.description}
+              <p className="text-lg mb-12 max-w-2xl mx-auto lg:mx-0 text-slate-600 leading-relaxed">
+                I craft exceptional digital experiences with modern web technologies, machine learning, and data-driven insights. Passionate about building scalable applications that make a difference.
               </p>
             </FadeIn>
             
@@ -191,6 +242,6 @@ export default function Home() {
           </motion.div>
         </FadeIn>
       </div>
-    </AnimatedBackground>
+    </div>
   );
 }

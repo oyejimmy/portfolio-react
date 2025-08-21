@@ -51,16 +51,20 @@
   --tracking-normal: 0em;
   --spacing: 0.25rem;
   
-  /* Custom portfolio colors - Modern gradient scheme */
-  --portfolio-primary: hsl(270 100% 65%);
-  --portfolio-secondary: hsl(200 100% 55%);
-  --portfolio-accent: hsl(320 100% 70%);
-  --portfolio-bg-light: hsl(220 20% 98%);
-  --portfolio-bg-dark: hsl(220 30% 5%);
-  --portfolio-text-primary: hsl(220 25% 15%);
-  --portfolio-text-secondary: hsl(220 10% 40%);
-  --portfolio-card-shadow: hsl(220 25% 25% / 0.1);
-  --portfolio-gradient: linear-gradient(135deg, var(--portfolio-primary) 0%, var(--portfolio-secondary) 50%, var(--portfolio-accent) 100%);
+  /* World-class professional color scheme */
+  --portfolio-primary: hsl(239 84% 67%);
+  --portfolio-secondary: hsl(217 91% 60%);
+  --portfolio-accent: hsl(262 83% 58%);
+  --portfolio-bg-light: hsl(210 40% 98%);
+  --portfolio-bg-surface: hsl(0 0% 100%);
+  --portfolio-text-primary: hsl(215 25% 27%);
+  --portfolio-text-secondary: hsl(215 16% 47%);
+  --portfolio-text-muted: hsl(215 13% 65%);
+  --portfolio-border: hsl(214 32% 91%);
+  --portfolio-card-shadow: hsl(215 25% 27% / 0.08);
+  --portfolio-gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --portfolio-gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  --portfolio-gradient-surface: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
 .dark {
@@ -126,48 +130,93 @@
 }
 
 @layer components {
-  /* Portfolio-specific component styles */
-  .hero-gradient {
-    background: linear-gradient(135deg, 
-      hsl(270 100% 65%) 0%, 
-      hsl(260 100% 60%) 25%, 
-      hsl(250 100% 55%) 50%, 
-      hsl(240 100% 60%) 75%, 
-      hsl(200 100% 55%) 100%);
+  /* Modern professional portfolio styles */
+  .portfolio-bg-primary {
+    background: var(--portfolio-gradient-primary);
+  }
+
+  .portfolio-bg-secondary {
+    background: var(--portfolio-gradient-secondary);
+  }
+
+  .portfolio-bg-surface {
+    background: var(--portfolio-bg-surface);
+  }
+
+  .portfolio-text-primary {
+    color: var(--portfolio-text-primary);
+  }
+
+  .portfolio-text-secondary {
+    color: var(--portfolio-text-secondary);
+  }
+
+  .portfolio-text-muted {
+    color: var(--portfolio-text-muted);
+  }
+
+  .portfolio-border {
+    border-color: var(--portfolio-border);
+  }
+
+  .portfolio-shadow {
+    box-shadow: 0 10px 40px var(--portfolio-card-shadow);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, 
-      hsl(270 100% 65%) 0%, 
-      hsl(260 100% 60%) 25%, 
-      hsl(250 100% 55%) 50%, 
-      hsl(240 100% 60%) 75%, 
-      hsl(200 100% 55%) 100%);
+    background: var(--portfolio-gradient-primary);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
 
+  .hero-gradient {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #94a3b8 75%, #64748b 100%);
+  }
+
   .animated-gradient {
-    background: linear-gradient(135deg, 
-      hsl(270 100% 65%) 0%, 
-      hsl(260 100% 60%) 25%, 
-      hsl(250 100% 55%) 50%, 
-      hsl(240 100% 60%) 75%, 
-      hsl(200 100% 55%) 100%);
+    background: var(--portfolio-gradient-primary);
     background-size: 200% 200%;
-    animation: gradientShift 4s ease infinite;
+    animation: gradientShift 6s ease infinite;
   }
 
   .glass-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--portfolio-border);
+    box-shadow: 0 8px 32px var(--portfolio-card-shadow);
+  }
+
+  .glass-card-muted {
+    background: rgba(248, 250, 252, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--portfolio-border);
   }
 
   .glow-effect {
-    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
+    filter: drop-shadow(0 4px 20px rgba(99, 102, 241, 0.25));
+  }
+
+  .glow-effect-purple {
+    filter: drop-shadow(0 4px 20px rgba(139, 92, 246, 0.25));
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 60px var(--portfolio-card-shadow);
+  }
+
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  .section-padding-sm {
+    padding: 3rem 0;
   }
 
   .card-shadow {

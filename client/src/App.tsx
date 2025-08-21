@@ -1,4 +1,3 @@
-import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -13,32 +12,38 @@ import Experience from "@/pages/Experience";
 import Skills from "@/pages/Skills";
 import Projects from "@/pages/Projects";
 import Contact from "@/pages/Contact";
-import NotFound from "@/pages/not-found";
-
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/achievements" component={Achievements} />
-      <Route path="/education" component={Education} />
-      <Route path="/experience" component={Experience} />
-      <Route path="/skills" component={Skills} />
-      <Route path="/projects" component={Projects} />
-      <Route path="/contact" component={Contact} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
           <Navbar />
-          <main>
-            <Router />
+          <main className="overflow-x-hidden">
+            <section id="home">
+              <Home />
+            </section>
+            <section id="about" className="section-padding">
+              <About />
+            </section>
+            <section id="achievements" className="section-padding">
+              <Achievements />
+            </section>
+            <section id="education" className="section-padding">
+              <Education />
+            </section>
+            <section id="experience" className="section-padding">
+              <Experience />
+            </section>
+            <section id="skills" className="section-padding">
+              <Skills />
+            </section>
+            <section id="projects" className="section-padding">
+              <Projects />
+            </section>
+            <section id="contact" className="section-padding">
+              <Contact />
+            </section>
           </main>
           <Footer />
         </div>
