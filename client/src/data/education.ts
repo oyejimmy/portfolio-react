@@ -10,19 +10,19 @@ export interface EducationItem {
 
 export const education: EducationItem[] = [
   {
-    period: "2021 – 2023",
-    institution: "Bahria University, Islamabad",
-    degree: "MSc Data Science",
-    details: "Specialized in machine learning, deep learning, and statistical analysis. Completed thesis on ensemble deep learning for medical image classification.",
+    period: "Sep 2022 – Sep 2024",
+    institution: "Bahria University",
+    degree: "Master's in Data Sciences",
+    details: "Specialized in Machine Learning, Deep Learning, Pattern Recognition, Big Data Analysis, and NLP. Focused on ensemble learning techniques for medical image classification.",
     logo: "BU",
-    thesis: "Ensemble Deep Learning for Thalassemia Classification"
+    thesis: "Ensemble Deep Learning for Precise Thalassemia Classification in Blood Smear Images - Achieved 75.61% validation accuracy"
   },
   {
-    period: "2017 – 2021", 
-    institution: "University XYZ",
-    degree: "BSc Computer Science",
-    details: "Comprehensive foundation in software engineering, data structures, algorithms, and database management systems.",
-    logo: "XY",
-    achievement: "Graduated with Honors, 3.8 GPA"
+    period: "Sep 2017 – Sep 2021", 
+    institution: "University of Agriculture, Peshawar",
+    degree: "Bachelor's in Computer Science",
+    details: "Comprehensive foundation in Electronics, Software Engineering, Operating Systems, Algorithms, and Artificial Intelligence. Built strong programming and analytical skills.",
+    logo: "UA",
+    achievement: "Strong foundation in core computer science principles"
   }
 ];

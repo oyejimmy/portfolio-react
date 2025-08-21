@@ -13,17 +13,17 @@ export const personalInfo: PersonalInfo = {
   name: "Jamil Ur Rahman",
   title: "Software Engineer & Data Science Specialist",
   description:
-    "Passionate about building scalable applications and extracting insights from data. Specialized in React, TypeScript, and Machine Learning.",
+    "Passionate about building scalable applications and extracting insights from data. Leading React.js development across multiple client-facing platforms with expertise in Machine Learning and Deep Learning.",
   location: "Islamabad, Pakistan",
   yearsExperience: 3,
-  projectsBuilt: 10,
-  studentsMentored: 100,
-  technologies: 5,
+  projectsBuilt: 25,
+  studentsMentored: 0,
+  technologies: 15,
 };
 
 export const aboutContent = {
   story: [
-    "I'm a passionate Software Engineer with a Master's degree in Data Science from Bahria University, Islamabad. My journey combines the analytical rigor of data science with the creative problem-solving of software development.",
-    "I specialize in building scalable web applications using modern technologies like React and TypeScript, while leveraging machine learning techniques to create intelligent solutions. My recent work includes developing ensemble deep learning models for medical classification and creating intuitive user interfaces for complex data systems.",
+    "I'm a passionate Software Engineer with a Master's degree in Data Science from Bahria University, Islamabad. Currently working as a Software Engineer at Smart Forum, leading React.js development across multiple client-facing platforms and refactoring legacy codebases to improve maintainability and performance by 80%.",
+    "My expertise spans across full-stack development, machine learning, and deep learning. I have contributed to significant projects like Pakistan Telecommunication Authority's DIRBS portal and developed ensemble deep learning models for precise thalassemia classification. I specialize in React.js, Python, TensorFlow, and various AI technologies, with a strong focus on creating scalable solutions and intelligent systems.",
   ],
 };

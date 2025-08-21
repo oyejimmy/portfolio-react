@@ -14,58 +14,58 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Frontend Development",
+    title: "Languages & Programming",
     skills: [
-      { name: "React", icon: "fab fa-react", color: "text-blue-400", category: "frontend" },
-      { name: "Next.js", icon: "fas fa-arrow-right", color: "text-gray-800", category: "frontend" },
-      { name: "TypeScript", icon: "fab fa-js-square", color: "text-blue-600", category: "frontend" },
-      { name: "Tailwind CSS", icon: "fas fa-palette", color: "text-cyan-500", category: "frontend" },
-      { name: "Vue.js", icon: "fab fa-vuejs", color: "text-green-500", category: "frontend" },
-      { name: "Redux", icon: "fas fa-layer-group", color: "text-purple-600", category: "frontend" }
+      { name: "JavaScript", icon: "fab fa-js-square", color: "text-yellow-500", category: "programming" },
+      { name: "TypeScript", icon: "fas fa-code", color: "text-blue-600", category: "programming" },
+      { name: "Python", icon: "fab fa-python", color: "text-blue-500", category: "programming" },
+      { name: "Java", icon: "fab fa-java", color: "text-red-600", category: "programming" },
+      { name: "HTML", icon: "fab fa-html5", color: "text-orange-600", category: "programming" },
+      { name: "CSS", icon: "fab fa-css3-alt", color: "text-blue-500", category: "programming" },
+      { name: "SQL", icon: "fas fa-database", color: "text-blue-700", category: "programming" }
     ]
   },
   {
-    title: "Backend Development",
+    title: "Frontend Frameworks & Libraries",
     skills: [
-      { name: "Node.js", icon: "fab fa-node-js", color: "text-green-600", category: "backend" },
-      { name: "Express.js", icon: "fas fa-server", color: "text-gray-700", category: "backend" },
-      { name: "Python", icon: "fab fa-python", color: "text-blue-500", category: "backend" },
-      { name: "Django", icon: "fas fa-cogs", color: "text-green-700", category: "backend" },
-      { name: "FastAPI", icon: "fas fa-rocket", color: "text-red-500", category: "backend" },
-      { name: "GraphQL", icon: "fas fa-project-diagram", color: "text-pink-500", category: "backend" }
+      { name: "React.js", icon: "fab fa-react", color: "text-blue-400", category: "frontend" },
+      { name: "Redux", icon: "fas fa-layer-group", color: "text-purple-600", category: "frontend" },
+      { name: "Ant Design", icon: "fas fa-palette", color: "text-blue-600", category: "frontend" }
     ]
   },
   {
-    title: "Data Science & AI",
+    title: "Data Science & Machine Learning",
     skills: [
-      { name: "Machine Learning", icon: "fas fa-brain", color: "text-purple-600", category: "ai" },
       { name: "TensorFlow", icon: "fas fa-cube", color: "text-orange-500", category: "ai" },
-      { name: "PyTorch", icon: "fas fa-fire", color: "text-red-600", category: "ai" },
       { name: "Pandas", icon: "fas fa-chart-bar", color: "text-blue-600", category: "ai" },
       { name: "NumPy", icon: "fas fa-calculator", color: "text-blue-500", category: "ai" },
-      { name: "Scikit-learn", icon: "fas fa-microscope", color: "text-orange-600", category: "ai" }
+      { name: "VGG16", icon: "fas fa-brain", color: "text-purple-500", category: "ai" },
+      { name: "ResNet50", icon: "fas fa-network-wired", color: "text-green-600", category: "ai" },
+      { name: "MobileNetV2", icon: "fas fa-mobile-alt", color: "text-red-500", category: "ai" },
+      { name: "Keras", icon: "fas fa-microscope", color: "text-orange-600", category: "ai" }
     ]
   },
   {
-    title: "Database & Cloud",
-    skills: [
-      { name: "PostgreSQL", icon: "fas fa-database", color: "text-blue-700", category: "database" },
-      { name: "MongoDB", icon: "fas fa-leaf", color: "text-green-600", category: "database" },
-      { name: "Redis", icon: "fas fa-memory", color: "text-red-500", category: "database" },
-      { name: "AWS", icon: "fab fa-aws", color: "text-orange-400", category: "cloud" },
-      { name: "Docker", icon: "fab fa-docker", color: "text-blue-600", category: "cloud" },
-      { name: "Kubernetes", icon: "fas fa-ship", color: "text-blue-500", category: "cloud" }
-    ]
-  },
-  {
-    title: "Tools & DevOps",
+    title: "Tools & Development",
     skills: [
       { name: "Git", icon: "fab fa-git-alt", color: "text-red-500", category: "tool" },
-      { name: "GitHub Actions", icon: "fab fa-github", color: "text-gray-800", category: "tool" },
-      { name: "Jest", icon: "fas fa-vial", color: "text-red-600", category: "tool" },
-      { name: "Webpack", icon: "fas fa-box", color: "text-blue-600", category: "tool" },
-      { name: "Nginx", icon: "fas fa-server", color: "text-green-600", category: "tool" },
-      { name: "Linux", icon: "fab fa-linux", color: "text-gray-800", category: "tool" }
+      { name: "GitHub", icon: "fab fa-github", color: "text-gray-800", category: "tool" },
+      { name: "VS Code", icon: "fas fa-code", color: "text-blue-600", category: "tool" },
+      { name: "Postman", icon: "fas fa-mail-bulk", color: "text-orange-500", category: "tool" },
+      { name: "JIRA", icon: "fab fa-jira", color: "text-blue-700", category: "tool" },
+      { name: "Figma", icon: "fab fa-figma", color: "text-purple-500", category: "tool" }
+    ]
+  },
+  {
+    title: "Cloud & Analytics",
+    skills: [
+      { name: "Heroku", icon: "fas fa-cloud", color: "text-purple-600", category: "cloud" },
+      { name: "Microsoft Azure", icon: "fab fa-microsoft", color: "text-blue-600", category: "cloud" },
+      { name: "Google Cloud", icon: "fab fa-google", color: "text-blue-500", category: "cloud" },
+      { name: "Oracle Cloud", icon: "fas fa-cloud-upload-alt", color: "text-red-600", category: "cloud" },
+      { name: "Tableau", icon: "fas fa-chart-line", color: "text-blue-700", category: "analytics" },
+      { name: "Power BI", icon: "fas fa-chart-pie", color: "text-yellow-600", category: "analytics" },
+      { name: "Google Data Studio", icon: "fab fa-google", color: "text-green-600", category: "analytics" }
     ]
   }
 ];
