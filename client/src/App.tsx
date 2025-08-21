@@ -12,6 +12,7 @@ import Experience from "@/pages/Experience";
 import Skills from "@/pages/Skills";
 import Projects from "@/pages/Projects";
 import Contact from "@/pages/Contact";
+import Certificates from "@/pages/Certificates";
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
             </section>
             <section id="projects" className="section-padding">
               <Projects />
+            </section>
+            <section id="certificates" className="section-padding">
+              <Certificates />
             </section>
             <section id="contact" className="section-padding">
               <Contact />

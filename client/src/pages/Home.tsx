@@ -33,45 +33,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center relative overflow-hidden">
-      {/* Floating background elements */}
-      <div className="absolute inset-0">
-        <motion.div
-          className="absolute w-96 h-96 rounded-full opacity-10"
-          style={{
-            background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
-            top: "10%",
-            left: "5%",
-          }}
-          animate={{
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute w-64 h-64 rounded-full opacity-8"
-          style={{
-            background: "linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)",
-            top: "60%",
-            right: "10%",
-          }}
-          animate={{
-            x: [0, -20, 0],
-            y: [0, 20, 0],
-            scale: [1, 0.9, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        />
+      {/* Simplified background elements for performance */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute w-96 h-96 rounded-full opacity-5 bg-gradient-to-br from-indigo-400 to-purple-400 top-10 left-10"></div>
+        <div className="absolute w-64 h-64 rounded-full opacity-5 bg-gradient-to-br from-blue-400 to-indigo-400 bottom-20 right-10"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">

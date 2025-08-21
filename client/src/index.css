@@ -212,11 +212,32 @@
   }
 
   .section-padding {
-    padding: 5rem 0;
+    padding: 4rem 0;
   }
 
   .section-padding-sm {
-    padding: 3rem 0;
+    padding: 2rem 0;
+  }
+
+  /* Performance optimizations */
+  .reduce-motion {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Smooth scroll optimization */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   .card-shadow {
