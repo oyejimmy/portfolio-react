@@ -7,48 +7,51 @@ import { Code, Database, Brain, Users, Award, Calendar } from "lucide-react";
 
 export default function About() {
   const stats = [
-    { 
-      value: `${personalInfo.yearsExperience}+`, 
+    {
+      value: `${personalInfo.yearsExperience}+`,
       label: "Years Experience",
       icon: Calendar,
-      color: "text-purple-600"
+      color: "text-purple-600",
     },
-    { 
-      value: `${personalInfo.projectsBuilt}+`, 
+    {
+      value: `${personalInfo.projectsBuilt}+`,
       label: "Projects Built",
       icon: Code,
-      color: "text-blue-600"
+      color: "text-blue-600",
     },
-    { 
-      value: `${personalInfo.studentsMentored}+`, 
+    {
+      value: `${personalInfo.studentsMentored}+`,
       label: "Students Mentored",
       icon: Users,
-      color: "text-green-600"
+      color: "text-green-600",
     },
-    { 
-      value: `${personalInfo.technologies}+`, 
+    {
+      value: `${personalInfo.technologies}+`,
       label: "Technologies",
       icon: Database,
-      color: "text-orange-600"
-    }
+      color: "text-orange-600",
+    },
   ];
 
   const highlights = [
     {
       icon: Brain,
       title: "Data Science Expert",
-      description: "MSc in Data Science with specialization in machine learning and deep learning algorithms."
+      description:
+        "MSc in Data Science with specialization in machine learning and deep learning algorithms.",
     },
     {
       icon: Code,
-      title: "Full-Stack Developer", 
-      description: "Proficient in modern web technologies including React, TypeScript, and Node.js."
+      title: "Full-Stack Developer",
+      description:
+        "Proficient in modern web technologies including React, TypeScript, and Node.js.",
     },
     {
       icon: Award,
       title: "Research Excellence",
-      description: "Published research in medical AI with 95% accuracy in thalassemia classification."
-    }
+      description:
+        "Published research in medical AI with 95% accuracy in thalassemia classification.",
+    },
   ];
 
   return (
@@ -58,17 +61,18 @@ export default function About() {
           <h2 className="text-4xl font-bold mb-4 text-gradient">About Me</h2>
           <div className="w-24 h-1 animated-gradient mx-auto rounded-full"></div>
           <p className="text-lg text-portfolio-secondary mt-6 max-w-3xl mx-auto">
-            Discover my journey from data science to software engineering, and how I combine analytical thinking with creative problem-solving.
+            Discover my journey from data science to software engineering, and
+            how I combine analytical thinking with creative problem-solving.
           </p>
         </div>
       </FadeIn>
-      
+
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         {/* Profile Image Section */}
         <FadeIn direction="left">
           <div className="relative">
             {/* Main profile container */}
-            <motion.div 
+            <motion.div
               className="relative w-full h-96 rounded-3xl overflow-hidden mx-auto"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -79,21 +83,36 @@ export default function About() {
                 <div className="w-80 h-80 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border-2 border-white/20 relative overflow-hidden">
                   {/* Avatar representation */}
                   <div className="relative">
-                    <div className="w-32 h-32 rounded-full bg-white/20 border-4 border-white/30 flex items-center justify-center mb-4">
-                      <div className="text-4xl font-bold text-white">JR</div>
-                    </div>
+                    <motion.img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500"
+                      alt={`Professional Portrait`}
+                      className="w-32 h-32 rounded-full bg-white/20 border-4 border-white/30 flex items-center justify-center mb-4"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                      data-testid="hero-portrait-image"
+                    />
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-white mb-1">Jamil Ur Rahman</div>
-                      <div className="text-white/80 text-sm">Software Engineer</div>
-                      <div className="text-white/60 text-xs">Data Science Specialist</div>
+                      <div className="text-2xl font-bold text-white mb-1">
+                        Jamil Ur Rahman
+                      </div>
+                      <div className="text-white/80 text-sm">
+                        Software Engineer
+                      </div>
+                      <div className="text-white/60 text-xs">
+                        Data Science Specialist
+                      </div>
                     </div>
                   </div>
-                  
+
                   {/* Floating tech icons */}
                   <motion.div
                     className="absolute top-8 right-8 w-8 h-8 bg-yellow-400/20 rounded-full flex items-center justify-center"
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
                   >
                     <Code className="w-4 h-4 text-yellow-300" />
                   </motion.div>
@@ -106,7 +125,7 @@ export default function About() {
                   </motion.div>
                 </div>
               </div>
-              
+
               {/* Glow effect */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-400/30 via-blue-500/30 to-purple-600/30 blur-2xl -z-10" />
             </motion.div>
@@ -128,14 +147,14 @@ export default function About() {
             </motion.div>
           </div>
         </FadeIn>
-        
+
         {/* Content Section */}
         <div className="space-y-8">
           <FadeIn direction="right" delay={0.2}>
             <div className="space-y-6">
               {aboutContent.story.map((paragraph, index) => (
-                <motion.p 
-                  key={index} 
+                <motion.p
+                  key={index}
                   className="text-lg text-portfolio-secondary leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -167,15 +186,19 @@ export default function About() {
                       <IconComponent className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-portfolio-primary mb-1">{highlight.title}</h3>
-                      <p className="text-portfolio-secondary text-sm">{highlight.description}</p>
+                      <h3 className="font-semibold text-portfolio-primary mb-1">
+                        {highlight.title}
+                      </h3>
+                      <p className="text-portfolio-secondary text-sm">
+                        {highlight.description}
+                      </p>
                     </div>
                   </motion.div>
                 );
               })}
             </div>
           </FadeIn>
-          
+
           {/* Key Statistics */}
           <FadeIn direction="right" delay={0.6}>
             <div className="grid grid-cols-2 gap-4 mt-8">
@@ -192,21 +215,25 @@ export default function About() {
                   >
                     <Card className="stat-card card-shadow text-center hover:shadow-xl transition-all duration-300">
                       <CardContent className="p-6">
-                        <IconComponent className={`w-8 h-8 mx-auto mb-3 ${stat.color}`} />
-                        <motion.div 
+                        <IconComponent
+                          className={`w-8 h-8 mx-auto mb-3 ${stat.color}`}
+                        />
+                        <motion.div
                           className="text-3xl font-bold text-gradient mb-2"
                           initial={{ scale: 0 }}
                           whileInView={{ scale: 1 }}
                           viewport={{ once: true }}
-                          transition={{ 
+                          transition={{
                             type: "spring",
                             stiffness: 300,
-                            delay: index * 0.1 + 1
+                            delay: index * 0.1 + 1,
                           }}
                         >
                           {stat.value}
                         </motion.div>
-                        <div className="text-portfolio-secondary font-medium">{stat.label}</div>
+                        <div className="text-portfolio-secondary font-medium">
+                          {stat.label}
+                        </div>
                       </CardContent>
                     </Card>
                   </motion.div>

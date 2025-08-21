@@ -337,15 +337,14 @@ export default function Home() {
                   className="relative group"
                   style={{ perspective: "1000px" }}
                 >
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-1">
-                    <div className="w-full h-full rounded-3xl bg-white p-2">
-                      <img
-                        src="https://avatars.githubusercontent.com/u/112857745?s=400&u=1efd2b97dadb9a42fc9855a02a9707b72f8442a5&v=4"
-                        alt="Jamil Ur Rahman"
-                        className="w-80 h-80 md:w-96 md:h-96 rounded-2xl object-cover"
-                      />
-                    </div>
-                  </div>
+                  <motion.img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500"
+                    alt={`Professional Portrait`}
+                    className="w-80 h-80 mx-auto lg:mx-0 rounded-full object-cover shadow-2xl border-4 border-white/20"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                    data-testid="hero-portrait-image"
+                  />
 
                   {/* Orbiting elements */}
                   <motion.div
