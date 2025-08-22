@@ -7,10 +7,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, MapPin, Github, Linkedin, Download } from "lucide-react";
+import { Download } from "lucide-react";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { personalInfo } from "@/data/personal";
 import SectionWrapper from "@/components/SectionWrapper";
+
 interface ContactForm {
   firstName: string;
   lastName: string;
@@ -39,7 +46,6 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Create mailto link
     const subject = encodeURIComponent(formData.subject);
     const body = encodeURIComponent(
       `Hi Jamil,\n\n${formData.message}\n\nBest regards,\n${formData.firstName} ${formData.lastName}\n${formData.email}`
@@ -54,7 +60,6 @@ export default function Contact() {
         "Your default email client should open with the message pre-filled.",
     });
 
-    // Reset form
     setFormData({
       firstName: "",
       lastName: "",
@@ -66,32 +71,32 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: Mail,
+      icon: <FaEnvelope className="text-white w-6 h-6" />,
       title: "Email",
       value: SOCIAL_LINKS.email,
       href: `mailto:${SOCIAL_LINKS.email}`,
-      color: "bg-primary",
+      bg: "from-pink-400 to-red-500",
     },
     {
-      icon: Linkedin,
+      icon: <FaLinkedin className="text-white w-6 h-6" />,
       title: "LinkedIn",
       value: "linkedin.com/in/jamilurahman",
       href: SOCIAL_LINKS.linkedin,
-      color: "bg-secondary",
+      bg: "from-blue-500 to-cyan-600",
     },
     {
-      icon: Github,
+      icon: <FaGithub className="text-white w-6 h-6" />,
       title: "GitHub",
       value: "github.com/jamilurahman",
       href: SOCIAL_LINKS.github,
-      color: "bg-gray-800",
+      bg: "from-gray-800 to-gray-700",
     },
     {
-      icon: MapPin,
+      icon: <FaMapMarkerAlt className="text-white w-6 h-6" />,
       title: "Location",
       value: personalInfo.location,
       href: "#",
-      color: "bg-green-600",
+      bg: "from-green-500 to-emerald-600",
     },
   ];
 
@@ -105,11 +110,17 @@ export default function Contact() {
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mb-6"
+              className="inline-flex items-center justify-center w-16 h-16 
+                         bg-gradient-to-br from-indigo-600 to-purple-600 
+                         rounded-2xl mb-6 shadow-lg"
             >
-              <Mail className="w-8 h-8 text-white" />
+              <FaEnvelope className="w-7 h-7 text-white" />
             </motion.div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-6 
+                           bg-gradient-to-r from-indigo-600 to-purple-600 
+                           bg-clip-text text-transparent"
+            >
               Get In Touch
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -120,47 +131,50 @@ export default function Contact() {
         </FadeIn>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
+          {/* Contact Info with 3D Social Icons */}
           <div>
             <h3 className="text-2xl font-semibold mb-8">Let's Connect</h3>
-
             <div className="space-y-6 mb-8">
-              {contactInfo.map((info, index) => {
-                const IconComponent = info.icon;
-                return (
-                  <div key={index} className="flex items-start">
-                    <div
-                      className={`w-12 h-12 ${info.color} rounded-full flex items-center justify-center text-white mr-4 shrink-0`}
-                    >
-                      <IconComponent className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">{info.title}</h4>
-                      {info.href === "#" ? (
-                        <p className="text-portfolio-secondary">{info.value}</p>
-                      ) : (
-                        <a
-                          href={info.href}
-                          className="text-portfolio-secondary hover:text-primary transition-colors"
-                          target={
-                            info.href.startsWith("http") ? "_blank" : undefined
-                          }
-                          rel={
-                            info.href.startsWith("http")
-                              ? "noopener noreferrer"
-                              : undefined
-                          }
-                        >
-                          {info.value}
-                        </a>
-                      )}
-                    </div>
+              {contactInfo.map((info, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05, rotate: 1 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center space-x-4 cursor-pointer"
+                >
+                  <div
+                    className={`w-14 h-14 bg-gradient-to-br ${info.bg} 
+                               rounded-2xl flex items-center justify-center 
+                               shadow-md hover:shadow-xl transform hover:-rotate-3 
+                               transition duration-300`}
+                  >
+                    {info.icon}
                   </div>
-                );
-              })}
+                  <div>
+                    <h4 className="font-semibold">{info.title}</h4>
+                    {info.href === "#" ? (
+                      <p className="text-portfolio-secondary">{info.value}</p>
+                    ) : (
+                      <a
+                        href={info.href}
+                        className="text-portfolio-secondary hover:text-primary transition-colors"
+                        target={
+                          info.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          info.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                      >
+                        {info.value}
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Download CV Button */}
             <Button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 px-8 py-3 rounded-xl font-semibold shadow-lg">
               <Download className="mr-2 h-4 w-4" />
               Download CV
@@ -274,10 +288,10 @@ export default function Contact() {
         </div>
       </div>
 
+      {/* Map Section */}
       <div className="mt-16">
         <SectionWrapper background="white">
           <div className="text-center mb-16">
-            {/* Heading */}
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
               Find Me Here
             </h2>
@@ -288,7 +302,6 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Map Section */}
           <div className="relative w-full h-[400px] rounded-2xl shadow-lg overflow-hidden">
             <iframe
               title="Google Map - F7 Islamabad Markaz"
