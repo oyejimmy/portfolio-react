@@ -212,6 +212,7 @@ export default function Contact() {
                       id="firstName"
                       name="firstName"
                       required
+                      placeholder="Enter your first name"
                       value={formData.firstName}
                       onChange={handleInputChange}
                       className="w-full"
@@ -229,6 +230,7 @@ export default function Contact() {
                       id="lastName"
                       name="lastName"
                       required
+                      placeholder="Enter your last name"
                       value={formData.lastName}
                       onChange={handleInputChange}
                       className="w-full"
@@ -248,6 +250,7 @@ export default function Contact() {
                     id="email"
                     name="email"
                     required
+                    placeholder="you@example.com"
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full"
@@ -266,6 +269,7 @@ export default function Contact() {
                     id="subject"
                     name="subject"
                     required
+                    placeholder="What’s this about?"
                     value={formData.subject}
                     onChange={handleInputChange}
                     className="w-full"
@@ -284,6 +288,7 @@ export default function Contact() {
                     name="message"
                     rows={5}
                     required
+                    placeholder="Write your message here..."
                     value={formData.message}
                     onChange={handleInputChange}
                     className="w-full resize-none"
