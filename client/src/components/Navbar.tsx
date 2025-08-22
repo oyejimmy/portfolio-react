@@ -26,8 +26,6 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      // Update active section based on scroll position
       const sections = NAVIGATION_ITEMS.map((item) => item.path.slice(1));
       const scrollPosition = window.scrollY + 100;
 
@@ -53,17 +51,12 @@ export default function Navbar() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId.slice(1));
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     setIsOpen(false);
   };
 
-  const isActive = (path: string) => {
-    return activeSection === path.slice(1);
-  };
+  const isActive = (path: string) => activeSection === path.slice(1);
 
   return (
     <motion.nav
@@ -76,6 +69,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
+          {/* Logo */}
           <motion.div
             className="flex items-center"
             whileHover={{ scale: 1.05 }}
@@ -86,7 +80,7 @@ export default function Navbar() {
               className="flex items-center group cursor-pointer"
             >
               <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-shadow glow-effect">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl glow-effect">
                   JR
                 </div>
                 <motion.div
@@ -102,14 +96,10 @@ export default function Navbar() {
                   }}
                 />
               </div>
-              <div className="ml-3">
-                <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-900 bg-clip-text text-transparent">
-                  {"              "} {"              "}
-                </span>
-              </div>
             </button>
           </motion.div>
 
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {NAVIGATION_ITEMS.map((item, index) => (
               <motion.div
@@ -137,7 +127,7 @@ export default function Navbar() {
                 href={SOCIAL_LINKS.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-slate-100 hover:bg-indigo-100 text-slate-600 hover:text-indigo-600 transition-all duration-300"
+                className="p-2 rounded-full bg-[#181717] text-white hover:bg-black transition-all duration-300"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -147,14 +137,14 @@ export default function Navbar() {
                 href={SOCIAL_LINKS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-slate-100 hover:bg-blue-100 text-slate-600 hover:text-blue-600 transition-all duration-300"
+                className="p-2 rounded-full bg-[#0A66C2] text-white hover:bg-blue-700 transition-all duration-300"
                 whileHover={{ scale: 1.1, rotate: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Linkedin className="w-4 h-4" />
               </motion.a>
               <motion.a
-                href="/cv.pdf"
+                href="/JamilUrRahmanCV.pdf"
                 download
                 className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-medium hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
                 whileHover={{ scale: 1.05 }}
@@ -228,7 +218,7 @@ export default function Navbar() {
                       href={SOCIAL_LINKS.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-slate-100 hover:bg-indigo-100 text-slate-600 hover:text-indigo-600 transition-all duration-300"
+                      className="p-3 rounded-full bg-[#181717] text-white hover:bg-black transition-all duration-300"
                     >
                       <Github className="w-5 h-5" />
                     </a>
@@ -236,13 +226,13 @@ export default function Navbar() {
                       href={SOCIAL_LINKS.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-slate-100 hover:bg-blue-100 text-slate-600 hover:text-blue-600 transition-all duration-300"
+                      className="p-3 rounded-full bg-[#0A66C2] text-white hover:bg-blue-700 transition-all duration-300"
                     >
                       <Linkedin className="w-5 h-5" />
                     </a>
                   </div>
                   <a
-                    href="/cv.pdf"
+                    href="/JamilUrRahmanCV.pdf"
                     download
                     className="w-full px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium text-center flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
                   >

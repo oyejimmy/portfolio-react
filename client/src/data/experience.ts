@@ -24,7 +24,7 @@ export const experience: ExperienceItem[] = [
   {
     period: "Oct 2021 – Oct 2023",
     role: "Junior Software Engineer",
-    company: "Smart Forum",
+    company: "Central Asian Cellular Forum (CACF)",
     description:
       "Focused on application development, debugging, and proactive learning during 2 years as Junior Engineer.",
     responsibilities: [
@@ -38,7 +38,7 @@ export const experience: ExperienceItem[] = [
   {
     period: "Sep 2021 – Oct 2021",
     role: "Engineer Intern",
-    company: "Smart Forum",
+    company: "3G TECHNOLOGIES (GUARANTEE) LTD.",
     description:
       "Hands-on internship focused on React.js development, debugging, and testing.",
     responsibilities: [

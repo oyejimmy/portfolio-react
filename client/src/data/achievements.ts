@@ -7,27 +7,31 @@ export interface Achievement {
 
 export const achievements: Achievement[] = [
   {
-    year: "23",
+    year: "24",
     title: "Published Thesis on Thalassemia Classification",
-    description: "Achieved 1st place in university research showcase for developing an ensemble deep learning model for automated thalassemia classification with 95% accuracy.",
-    period: "2023"
+    description:
+      "Achieved 1st place in university research showcase for developing an ensemble deep learning model for automated thalassemia classification with 75% accuracy.",
+    period: "2024",
   },
   {
-    year: "22",
+    year: "24",
     title: "Built HRM System Prototype",
-    description: "Developed comprehensive onboarding module using React and TypeScript in just 2 weeks, featuring automated workflows and intuitive user interfaces.",
-    period: "2022"
+    description:
+      "Developed comprehensive onboarding module using React and TypeScript in just 5 weeks, featuring automated workflows and intuitive user interfaces.",
+    period: "2024",
   },
   {
     year: "21",
-    title: "Excellence in Teaching Award",
-    description: "Recognized for outstanding performance in designing interactive STEAM curricula and mentoring over 100 students in advanced scientific concepts.",
-    period: "2021"
+    title: "Excellence in Bachelor's Award",
+    description:
+      "Recognized for outstanding performance in developing of AI-powered legal chatbot for predicting relevant Pakistani penal code sections based on user input about crimes.",
+    period: "2021",
   },
   {
     year: "20",
     title: "Computer Science Honors Graduate",
-    description: "Graduated with honors maintaining a 3.8 GPA, specializing in software engineering and data structures with focus on algorithm optimization.",
-    period: "2020"
-  }
+    description:
+      "Graduated with honors maintaining a 3.8 GPA, specializing in software engineering and data structures with focus on algorithm optimization.",
+    period: "2020",
+  },
 ];

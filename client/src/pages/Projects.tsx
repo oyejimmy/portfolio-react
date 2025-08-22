@@ -41,7 +41,7 @@ export default function Projects() {
 
         {/* Subtitle */}
         <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-          A showcase of my work — from experimental builds to production-ready
+          A showcase of my work from experimental builds to production-ready
           apps, highlighting creativity, functionality, and design.
         </p>
       </motion.div>

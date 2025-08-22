@@ -59,7 +59,7 @@ export default function About() {
       icon: Award,
       title: "Research Excellence",
       description:
-        "Published research in medical AI with 95% accuracy in thalassemia classification.",
+        "Published research in medical AI with 75% accuracy in thalassemia classification.",
     },
   ];
 

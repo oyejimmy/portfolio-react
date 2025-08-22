@@ -23,8 +23,8 @@ export default function Achievements() {
               Key Achievements
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Milestones and accomplishments that showcase my dedication to excellence in technology, 
-              research, and professional development.
+              Milestones and accomplishments that showcase my dedication to
+              excellence in technology, research, and professional development.
             </p>
           </div>
         </FadeIn>
@@ -42,7 +42,7 @@ export default function Achievements() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className={`relative flex items-center mb-12 ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
             >
               {/* Timeline Node */}
@@ -68,9 +68,11 @@ export default function Achievements() {
               </motion.div>
 
               {/* Content Card */}
-              <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${
-                index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
-              }`}>
+              <div
+                className={`w-full md:w-5/12 ml-16 md:ml-0 ${
+                  index % 2 === 0 ? "md:mr-8" : "md:ml-8"
+                }`}
+              >
                 <motion.div
                   whileHover={{ y: -5 }}
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200"
@@ -97,9 +99,13 @@ export default function Achievements() {
                   {/* Achievement Type Badge */}
                   <div className="mt-4 flex items-center justify-between">
                     <Badge variant="outline" className="text-xs">
-                      {index === 0 ? 'Research Excellence' : 
-                       index === 1 ? 'Technical Achievement' :
-                       index === 2 ? 'Teaching Award' : 'Academic Honor'}
+                      {index === 0
+                        ? "Research Excellence"
+                        : index === 1
+                        ? "Technical Achievement"
+                        : index === 2
+                        ? "Research Excellence Award"
+                        : "Academic Honor"}
                     </Badge>
                     <div className="flex items-center space-x-1 text-yellow-500">
                       <Star className="w-4 h-4 fill-current" />
@@ -123,21 +129,27 @@ export default function Achievements() {
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-xl mb-3">
                   <Trophy className="w-6 h-6 text-yellow-600" />
                 </div>
-                <div className="text-3xl font-bold text-slate-800 mb-1">{achievements.length}</div>
+                <div className="text-3xl font-bold text-slate-800 mb-1">
+                  {achievements.length}
+                </div>
                 <div className="text-sm text-slate-600">Major Achievements</div>
               </div>
               <div className="text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl mb-3">
                   <Award className="w-6 h-6 text-blue-600" />
                 </div>
-                <div className="text-3xl font-bold text-slate-800 mb-1">1st</div>
+                <div className="text-3xl font-bold text-slate-800 mb-1">
+                  1st
+                </div>
                 <div className="text-sm text-slate-600">Place Research</div>
               </div>
               <div className="text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl mb-3">
                   <Star className="w-6 h-6 text-green-600" />
                 </div>
-                <div className="text-3xl font-bold text-slate-800 mb-1">95%</div>
+                <div className="text-3xl font-bold text-slate-800 mb-1">
+                  95%
+                </div>
                 <div className="text-sm text-slate-600">Model Accuracy</div>
               </div>
               <div className="text-center">

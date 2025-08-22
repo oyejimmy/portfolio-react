@@ -1,7 +1,5 @@
-import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { AnimatedBackground } from "@/components/ui/animated-background";
 import { TypingAnimation } from "@/components/ui/typing-animation";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Github, Linkedin, Download, ArrowDown, Sparkles } from "lucide-react";
@@ -26,7 +24,7 @@ export default function Home() {
       hover: "hover:bg-blue-700",
     },
     {
-      href: "/cv.pdf",
+      href: "../../public/JamilUrRahmanCV.pdf",
       icon: Download,
       label: "Download CV",
       bg: "bg-gradient-to-r from-purple-600 to-fuchsia-600",
@@ -127,15 +125,80 @@ export default function Home() {
                       <div className="text-6xl font-bold text-white">JR</div>
                     </div>
                     <div className="px-8">
-                      <h3 className="text-2xl font-bold text-slate-800 mb-2">
-                        Jamil Ur Rahman
+                      {/* Name with animated border */}
+                      <h3 className="text-2xl font-bold text-slate-800 mb-2 relative inline-block px-4 py-1">
+                        <motion.span
+                          className="relative z-10"
+                          initial={{ borderColor: "#6366F1" }}
+                          animate={{
+                            borderColor: [
+                              "#6366F1",
+                              "#A855F7",
+                              "#EC4899",
+                              "#F59E0B",
+                              "#10B981",
+                              "#22D3EE",
+                              "#6366F1",
+                            ],
+                          }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                          }}
+                        >
+                          Jamil Ur Rahman
+                        </motion.span>
+                        <motion.span
+                          className="absolute inset-0 rounded-md border-2"
+                          initial={{ opacity: 0.3 }}
+                          animate={{ opacity: [0.3, 1, 0.3] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        />
                       </h3>
+
                       <p className="text-lg text-slate-600 mb-2">
                         Full-Stack Developer
                       </p>
-                      <p className="text-sm text-slate-500">
-                        Data Science • AI/ML • Web Development
-                      </p>
+
+                      {/* Multi-color skill tags */}
+                      <div className="flex gap-2 justify-center lg:justify-start flex-wrap mb-4">
+                        {["Software Engineer", "Data Scientist"].map(
+                          (skill, idx) => (
+                            <span
+                              key={skill}
+                              className="px-3 py-1 font-medium rounded-full text-white"
+                              style={{
+                                background: `linear-gradient(90deg, ${
+                                  [
+                                    "#6366F1",
+                                    "#A855F7",
+                                    "#EC4899",
+                                    "#F59E0B",
+                                    "#10B981",
+                                    "#22D3EE",
+                                  ][idx % 6]
+                                }, ${
+                                  [
+                                    "#A855F7",
+                                    "#EC4899",
+                                    "#F59E0B",
+                                    "#10B981",
+                                    "#22D3EE",
+                                    "#6366F1",
+                                  ][idx % 6]
+                                })`,
+                              }}
+                            >
+                              {skill}
+                            </span>
+                          )
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -230,6 +293,7 @@ export default function Home() {
             {/* Enhanced CTA Buttons */}
             <FadeIn direction="up" delay={1.0}>
               <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12">
+                {/* Learn More Button */}
                 <motion.div
                   whileHover={{
                     scale: 1.05,
@@ -260,6 +324,7 @@ export default function Home() {
                   </Button>
                 </motion.div>
 
+                {/* Contact Button */}
                 <motion.div
                   whileHover={{
                     scale: 1.05,
@@ -415,7 +480,6 @@ export default function Home() {
           </FadeIn>
         </div>
 
-        {/* Scroll indicator */}
         <FadeIn direction="up" delay={1.6}>
           <motion.div
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"

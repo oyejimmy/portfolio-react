@@ -28,7 +28,7 @@ export function ExperienceSection() {
       status: "Previous Role",
       description: "Developed predictive models and analytics solutions for healthcare and finance sectors. Created machine learning pipelines that improved decision-making accuracy by 35%.",
       achievements: [
-        "Built fraud detection system with 95% accuracy",
+        "Built fraud detection system with 80% accuracy",
         "Processed 1M+ records daily with real-time insights",
         "Automated reporting saving 15 hours/week",
       ],
