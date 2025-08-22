@@ -176,8 +176,14 @@ export default function Contact() {
             </div>
 
             <Button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 px-8 py-3 rounded-xl font-semibold shadow-lg">
-              <Download className="mr-2 h-4 w-4" />
-              Download CV
+              <a
+                href="/JamilUrRahmanCV.pdf"
+                download
+                className="flex items-center"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download CV
+              </a>
             </Button>
           </div>
 

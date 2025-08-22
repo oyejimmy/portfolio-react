@@ -122,7 +122,12 @@ export default function Home() {
                   <div className="text-center">
                     {/* Professional avatar placeholder */}
                     <div className="w-48 h-48 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center mx-auto mb-4 shadow-xl">
-                      <div className="text-6xl font-bold text-white">JR</div>
+                      <div
+                        className="text-6xl text-white"
+                        style={{ fontFamily: "'Pacifico', cursive" }}
+                      >
+                        Jimmy
+                      </div>
                     </div>
                     <div className="px-8">
                       {/* Name with animated border */}
