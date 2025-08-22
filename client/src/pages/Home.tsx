@@ -2,10 +2,18 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { TypingAnimation } from "@/components/ui/typing-animation";
 import { FadeIn } from "@/components/ui/fade-in";
-import { Github, Linkedin, Download, ArrowDown, Sparkles } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Download,
+  ArrowDown,
+  Sparkles,
+  MessageCircle,
+} from "lucide-react";
 import { personalInfo } from "@/data/personal";
 import { SOCIAL_LINKS } from "@/lib/constants";
 import profilePic from "@/assets/profile.jpeg";
+import { SiWhatsapp } from "react-icons/si";
 
 export default function Home() {
   const socialLinks = [
@@ -22,6 +30,13 @@ export default function Home() {
       label: "LinkedIn Profile",
       bg: "bg-[#0A66C2]",
       hover: "hover:bg-blue-700",
+    },
+    {
+      href: "https://wa.me/923121999696",
+      icon: SiWhatsapp,
+      label: "WhatsApp",
+      bg: "bg-[#25D366]",
+      hover: "hover:bg-green-600",
     },
     {
       href: "../../public/JamilUrRahmanCV.pdf",
@@ -487,7 +502,7 @@ export default function Home() {
 
         <FadeIn direction="up" delay={1.6}>
           <motion.div
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >

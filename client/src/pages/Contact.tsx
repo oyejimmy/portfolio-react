@@ -17,6 +17,7 @@ import {
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { personalInfo } from "@/data/personal";
 import SectionWrapper from "@/components/SectionWrapper";
+import { SiWhatsapp } from "react-icons/si";
 
 interface ContactForm {
   firstName: string;
@@ -92,10 +93,17 @@ export default function Contact() {
       bg: "from-gray-800 to-gray-700",
     },
     {
+      icon: <SiWhatsapp className="text-white w-6 h-6" />,
+      title: "WhatsApp",
+      value: "+92 312 1999696",
+      href: "https://wa.me/923121999696",
+      bg: "from-green-400 to-green-600",
+    },
+    {
       icon: <FaMapMarkerAlt className="text-white w-6 h-6" />,
       title: "Location",
       value: personalInfo.location,
-      href: "#",
+      href: "https://www.google.com/maps/place/Islamabad,+Pakistan",
       bg: "from-green-500 to-emerald-600",
     },
   ];
