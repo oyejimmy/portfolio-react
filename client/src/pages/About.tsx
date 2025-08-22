@@ -12,6 +12,7 @@ import {
   Calendar,
   User,
 } from "lucide-react";
+import profilePic from "@/assets/profile1.jpeg";
 
 export default function About() {
   const stats = [
@@ -103,7 +104,7 @@ export default function About() {
                   {/* Avatar representation */}
                   <div className="relative">
                     <motion.img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500"
+                      src={profilePic}
                       alt={`Professional Portrait`}
                       className="w-32 h-32 rounded-full bg-white/20 border-4 border-white/30 flex items-center justify-center mb-4"
                       whileHover={{ scale: 1.05 }}

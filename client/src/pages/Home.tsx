@@ -7,6 +7,7 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { Github, Linkedin, Download, ArrowDown, Sparkles } from "lucide-react";
 import { personalInfo } from "@/data/personal";
 import { SOCIAL_LINKS } from "@/lib/constants";
+import profilePic from "@/assets/profile.jpeg";
 
 export default function Home() {
   const socialLinks = [
@@ -356,7 +357,7 @@ export default function Home() {
                   style={{ perspective: "1000px" }}
                 >
                   <motion.img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500"
+                    src={profilePic}
                     alt={`Professional Portrait`}
                     className="w-80 h-80 mx-auto lg:mx-0 rounded-full object-cover shadow-2xl border-4 border-white/20"
                     whileHover={{ scale: 1.05 }}
