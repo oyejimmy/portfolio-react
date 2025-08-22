@@ -3,7 +3,15 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { FadeIn } from "@/components/ui/fade-in";
 import { personalInfo, aboutContent } from "@/data/personal";
-import { Code, Database, Brain, Users, Award, Calendar } from "lucide-react";
+import {
+  Code,
+  Database,
+  Brain,
+  Users,
+  Award,
+  Calendar,
+  User,
+} from "lucide-react";
 
 export default function About() {
   const stats = [
@@ -58,15 +66,26 @@ export default function About() {
     <SectionWrapper>
       <FadeIn>
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient">About Me</h2>
-          <div className="w-24 h-1 animated-gradient mx-auto rounded-full"></div>
-          <p className="text-lg text-portfolio-secondary mt-6 max-w-3xl mx-auto">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200 }}
+            className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mb-6"
+          >
+            <User className="w-8 h-8 text-white" />
+          </motion.div>
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            My About
+          </h2>
+
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Discover my journey from data science to software engineering, and
             how I combine analytical thinking with creative problem-solving.
           </p>
         </div>
       </FadeIn>
-
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         {/* Profile Image Section */}
         <FadeIn direction="left">
@@ -219,7 +238,7 @@ export default function About() {
                           className={`w-8 h-8 mx-auto mb-3 ${stat.color}`}
                         />
                         <motion.div
-                          className="text-3xl font-bold text-gradient mb-2"
+                          className={`text-3xl font-bold mb-2 ${stat.color}`}
                           initial={{ scale: 0 }}
                           whileInView={{ scale: 1 }}
                           viewport={{ once: true }}

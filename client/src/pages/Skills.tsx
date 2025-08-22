@@ -11,7 +11,7 @@ const categoryIcons: Record<string, any> = {
   "Backend Development": Database,
   "Data Science & AI": Brain,
   "Database & Cloud": Cloud,
-  "Tools & DevOps": Wrench
+  "Tools & DevOps": Wrench,
 };
 
 export default function Skills() {
@@ -21,6 +21,7 @@ export default function Skills() {
     <div className="min-h-screen bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
+          {/* Section Heading */}
           <div className="text-center mb-16">
             <motion.div
               initial={{ scale: 0 }}
@@ -31,12 +32,13 @@ export default function Skills() {
             >
               <Code className="w-8 h-8 text-white" />
             </motion.div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               Skills & Technologies
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              A comprehensive toolkit spanning full-stack development, data science, and cloud technologies 
-              to build innovative, scalable solutions.
+              A comprehensive toolkit spanning full-stack development, data
+              science, and cloud technologies to build innovative, scalable
+              solutions.
             </p>
           </div>
         </FadeIn>
@@ -46,7 +48,7 @@ export default function Skills() {
           {skillCategories.map((category, index) => {
             const IconComponent = categoryIcons[category.title] || Code;
             const isSelected = selectedCategory === category.title;
-            
+
             return (
               <motion.div
                 key={category.title}
@@ -55,40 +57,49 @@ export default function Skills() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                onClick={() => setSelectedCategory(isSelected ? null : category.title)}
+                onClick={() =>
+                  setSelectedCategory(isSelected ? null : category.title)
+                }
                 className={`cursor-pointer rounded-2xl p-6 transition-all duration-300 border-2 ${
-                  isSelected 
-                    ? 'bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-300 shadow-lg' 
-                    : 'bg-white border-slate-200 hover:border-indigo-300 hover:shadow-md'
+                  isSelected
+                    ? "bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-300 shadow-lg"
+                    : "bg-white border-slate-200 hover:border-indigo-300 hover:shadow-md"
                 }`}
               >
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className={`p-3 rounded-xl ${
-                    isSelected 
-                      ? 'bg-gradient-to-br from-indigo-600 to-purple-600' 
-                      : 'bg-slate-100'
-                  }`}>
-                    <IconComponent className={`w-6 h-6 ${
-                      isSelected ? 'text-white' : 'text-slate-600'
-                    }`} />
+                  <div
+                    className={`p-3 rounded-xl ${
+                      isSelected
+                        ? "bg-gradient-to-br from-indigo-600 to-purple-600"
+                        : "bg-slate-100"
+                    }`}
+                  >
+                    <IconComponent
+                      className={`w-6 h-6 ${
+                        isSelected ? "text-white" : "text-slate-600"
+                      }`}
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-slate-800">
                     {category.title}
                   </h3>
                 </div>
-                
+
                 <p className="text-slate-600 text-sm mb-4">
                   {category.skills.length} technologies
                 </p>
 
-                <motion.div 
+                <motion.div
                   initial={false}
-                  animate={{ height: isSelected ? 'auto' : 0, opacity: isSelected ? 1 : 0 }}
+                  animate={{
+                    height: isSelected ? "auto" : 0,
+                    opacity: isSelected ? 1 : 0,
+                  }}
                   className="overflow-hidden"
                 >
                   <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-200">
                     {category.skills.slice(0, 6).map((skill, skillIndex) => (
-                      <Badge 
+                      <Badge
                         key={skillIndex}
                         variant="secondary"
                         className="text-xs bg-indigo-100 text-indigo-700 hover:bg-indigo-200"
@@ -118,15 +129,27 @@ export default function Skills() {
               className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-8 mb-12 border border-indigo-200"
             >
               <div className="text-center mb-8">
-                <h3 className="text-3xl font-bold text-slate-800 mb-4">{selectedCategory}</h3>
+                <div className="flex items-center justify-center space-x-3 mb-4">
+                  {(() => {
+                    const IconComponent =
+                      categoryIcons[selectedCategory] || Code;
+                    return (
+                      <IconComponent className="w-8 h-8 text-indigo-600" />
+                    );
+                  })()}
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    {selectedCategory}
+                  </h3>
+                </div>
                 <p className="text-slate-600">
-                  Technologies and frameworks I use for {selectedCategory.toLowerCase()}
+                  Technologies and frameworks I use for{" "}
+                  {selectedCategory.toLowerCase()}
                 </p>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 {skillCategories
-                  .find(cat => cat.title === selectedCategory)
+                  .find((cat) => cat.title === selectedCategory)
                   ?.skills.map((skill, index) => (
                     <motion.div
                       key={skill.name}
@@ -137,14 +160,15 @@ export default function Skills() {
                       className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-200 text-center border border-slate-200"
                     >
                       <div className="mb-3">
-                        <i className={`${skill.icon} text-2xl ${skill.color}`}></i>
+                        <i
+                          className={`${skill.icon} text-2xl ${skill.color}`}
+                        ></i>
                       </div>
                       <h4 className="font-medium text-slate-800 text-sm leading-tight">
                         {skill.name}
                       </h4>
                     </motion.div>
-                  ))
-                }
+                  ))}
               </div>
 
               <div className="text-center mt-6">
@@ -164,7 +188,7 @@ export default function Skills() {
         <FadeIn delay={0.3}>
           <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-              {skillCategories.map((category, index) => {
+              {skillCategories.map((category) => {
                 const IconComponent = categoryIcons[category.title] || Code;
                 return (
                   <div key={category.title} className="text-center">
@@ -175,7 +199,7 @@ export default function Skills() {
                       {category.skills.length}
                     </div>
                     <div className="text-sm text-slate-600 leading-tight">
-                      {category.title.split(' ')[0]} Skills
+                      {category.title.split(" ")[0]} Skills
                     </div>
                   </div>
                 );

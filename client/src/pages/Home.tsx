@@ -14,28 +14,29 @@ export default function Home() {
       href: SOCIAL_LINKS.github,
       icon: Github,
       label: "GitHub Profile",
-      color: "hover:bg-gray-700",
+      bg: "bg-[#181717]",
+      hover: "hover:bg-black",
     },
     {
       href: SOCIAL_LINKS.linkedin,
       icon: Linkedin,
       label: "LinkedIn Profile",
-      color: "hover:bg-blue-700",
+      bg: "bg-[#0A66C2]",
+      hover: "hover:bg-blue-700",
     },
     {
       href: "/cv.pdf",
       icon: Download,
       label: "Download CV",
-      color: "hover:bg-purple-700",
+      bg: "bg-gradient-to-r from-purple-600 to-fuchsia-600",
+      hover: "hover:from-purple-700 hover:to-fuchsia-700",
       download: true,
     },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center relative overflow-hidden">
-      {/* Enhanced animated background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Floating orbs with smooth animations */}
         <motion.div
           className="absolute w-72 h-72 rounded-full opacity-20 bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400"
           style={{ top: "10%", left: "5%" }}
@@ -81,7 +82,6 @@ export default function Home() {
           }}
         />
 
-        {/* Sparkle effects */}
         {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
@@ -183,12 +183,28 @@ export default function Home() {
               </div>
             </FadeIn>
 
+            {/* Heading with animated multicolor gradient inside the name */}
             <FadeIn direction="up" delay={0.4}>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-                <span className="block text-slate-800">Hi, I'm</span>
-                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">
+                <span className="block text-slate-800">Hi, I&apos;m</span>
+                <motion.span
+                  className="bg-clip-text text-transparent inline-block"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(90deg, #6366F1, #A855F7, #EC4899, #F59E0B, #10B981, #22D3EE, #6366F1)",
+                    backgroundSize: "300% 300%",
+                  }}
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                >
                   {personalInfo.name}
-                </span>
+                </motion.span>
               </h1>
             </FadeIn>
 
@@ -276,7 +292,7 @@ export default function Home() {
               </div>
             </FadeIn>
 
-            {/* Social Links */}
+            {/* Social Links (brand backgrounds + white icons) */}
             <FadeIn direction="up" delay={1.2}>
               <div className="flex justify-center lg:justify-start space-x-4">
                 {socialLinks.map((social, index) => {
@@ -294,15 +310,17 @@ export default function Home() {
                           : undefined
                       }
                       download={social.download}
-                      className={`p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white ${social.color} transition-all duration-300 group`}
-                      whileHover={{ scale: 1.1, y: -2 }}
+                      className={`relative p-4 rounded-xl ${social.bg} ${social.hover} text-white shadow-lg border border-white/10 transition-all duration-300 group`}
+                      whileHover={{ scale: 1.12, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1 + 1.4 }}
                       aria-label={social.label}
                     >
-                      <IconComponent className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      {/* Subtle glow on hover */}
+                      <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-60 blur-md transition duration-300 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
+                      <IconComponent className="relative w-6 h-6 group-hover:scale-110 transition-transform" />
                     </motion.a>
                   );
                 })}

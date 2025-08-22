@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Heart, Code, Coffee } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Heart,
+  Code,
+  Coffee,
+  Link,
+  Send,
+} from "lucide-react";
 import { SOCIAL_LINKS, NAVIGATION_ITEMS } from "@/lib/constants";
 
 export default function Footer() {
@@ -28,36 +37,9 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden">
-      {/* Animated background */}
+      {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4xIi8+Cjwvc3ZnPgo=')] opacity-20"></div>
-
-        {/* Floating elements */}
-        <motion.div
-          className="absolute top-20 left-10 w-2 h-2 bg-purple-400 rounded-full opacity-60"
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.6, 1, 0.6],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute top-32 right-20 w-1 h-1 bg-blue-400 rounded-full opacity-80"
-          animate={{
-            y: [0, -15, 0],
-            x: [0, 10, 0],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        />
       </div>
 
       <div className="relative z-10 text-white py-16">
@@ -72,11 +54,11 @@ export default function Footer() {
               className="text-center lg:text-left"
             >
               <div className="flex items-center justify-center lg:justify-start mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold text-xl shadow-lg glow-effect mr-3">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold text-xl shadow-lg mr-3">
                   JR
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gradient">
+                  <h3 className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 animate-text">
                     Jamil Ur Rahman
                   </h3>
                   <p className="text-gray-300 text-sm">Software Engineer</p>
@@ -126,7 +108,8 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center lg:text-left"
             >
-              <h4 className="text-lg font-semibold mb-6 text-gradient">
+              <h4 className="flex items-center justify-center lg:justify-start text-lg font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-text">
+                <Link className="w-5 h-5 mr-2 text-blue-300" />
                 Quick Links
               </h4>
               <div className="grid grid-cols-2 gap-2">
@@ -155,8 +138,9 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-center lg:text-left"
             >
-              <h4 className="text-lg font-semibold mb-6 text-gradient">
-                Let's Connect
+              <h4 className="flex items-center justify-center lg:justify-start text-lg font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 animate-text">
+                <Send className="w-5 h-5 mr-2 text-purple-300" />
+                Let’s Connect
               </h4>
               <div className="space-y-4">
                 <div className="flex items-center justify-center lg:justify-start text-gray-300">
@@ -211,7 +195,7 @@ export default function Footer() {
                 <span>React & TypeScript</span>
               </div>
               <div className="flex items-center text-gray-400 text-sm">
-                <Coffee className="w-4 h-4 mr-2" />
+                <Coffee className="w-4 h-4 mr-2 text-yellow-300" />
                 <span>Powered by caffeine and creativity</span>
               </div>
             </div>

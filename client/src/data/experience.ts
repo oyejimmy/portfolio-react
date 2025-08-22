@@ -11,35 +11,54 @@ export const experience: ExperienceItem[] = [
     period: "Oct 2023 – Present",
     role: "Software Engineer",
     company: "Smart Forum",
-    description: "Leading React.js development and legacy system optimization",
+    description:
+      "Elevating my career from Junior to Software Engineer with a focus on high-quality solutions and team collaboration.",
     responsibilities: [
-      "Leading React.js development across multiple client-facing platforms",
-      "Refactored legacy codebases, improving maintainability and performance by 80%",
-      "Collaborated with cross-functional teams to deliver scalable solutions",
-      "Key Technologies: React.js, REST APIs, Git, Code Optimization"
-    ]
+      "Delivered scalable front-end solutions using React.js and modern JavaScript.",
+      "Refactored and optimized legacy codebases, boosting performance and maintainability.",
+      "Collaborated with cross-functional teams on critical projects, ensuring timely delivery.",
+      "Demonstrated strong problem-solving skills and adaptability in fast-paced environments.",
+      "Key Skills: React.js, Code Refactoring, REST APIs, Git, Agile Development",
+    ],
   },
   {
     period: "Oct 2021 – Oct 2023",
     role: "Junior Software Engineer",
     company: "Smart Forum",
-    description: "Frontend development and UI optimization specialist",
+    description:
+      "Focused on application development, debugging, and proactive learning during 2 years as Junior Engineer.",
     responsibilities: [
-      "Developed front-end modules using React.js and optimized UI performance",
-      "Participated in code reviews and debugging processes, ensuring production quality",
-      "Earned 'Employee of the Month' in July 2023 for outstanding performance",
-      "Key Skills: CSS, JavaScript, Unit Testing, Agile Teamwork"
-    ]
+      "Developed and maintained applications using React.js.",
+      "Debugged, tested, and documented new software features.",
+      "Researched and resolved a wide range of technical issues.",
+      "Earned 'Employee of the Month' in July 2023 for outstanding performance.",
+      "Key Skills: CSS, React.js, JavaScript, Unit Testing, Agile Teamwork",
+    ],
   },
   {
     period: "Sep 2021 – Oct 2021",
-    role: "Engineering Intern",
-    company: "3G Technologies",
-    description: "Web development and component testing",
+    role: "Engineer Intern",
+    company: "Smart Forum",
+    description:
+      "Hands-on internship focused on React.js development, debugging, and testing.",
     responsibilities: [
-      "Built and tested web components using React.js",
-      "Worked under senior engineers to resolve critical frontend bugs",
-      "Key Tools: CSS, JavaScript, Debugging"
-    ]
-  }
+      "Assisted senior engineers in building and testing front-end components.",
+      "Debugged and optimized code to resolve UI/UX issues.",
+      "Proactively learned new technologies and applied them to project tasks.",
+      "Key Tools: React.js, CSS, JavaScript, Debugging",
+    ],
+  },
+  {
+    period: "Aug 2016 – Sep 2017",
+    role: "Teacher",
+    company: "Leads School and System",
+    description:
+      "Educator with over a year of experience fostering dynamic learning environments.",
+    responsibilities: [
+      "Taught and managed classrooms, focusing on student development and academic excellence.",
+      "Collaborated in curriculum development and promoted adaptable teaching methods.",
+      "Built strong communication skills and leadership through managing diverse student groups.",
+      "Key Skills: Teaching, Management, Communication",
+    ],
+  },
 ];

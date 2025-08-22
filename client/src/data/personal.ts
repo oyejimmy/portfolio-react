@@ -17,13 +17,13 @@ export const personalInfo: PersonalInfo = {
   location: "Islamabad, Pakistan",
   yearsExperience: 3,
   projectsBuilt: 25,
-  studentsMentored: 0,
+  studentsMentored: 10,
   technologies: 15,
 };
 
 export const aboutContent = {
   story: [
     "I'm a passionate Software Engineer with a Master's degree in Data Science from Bahria University, Islamabad. Currently working as a Software Engineer at Smart Forum, leading React.js development across multiple client-facing platforms and refactoring legacy codebases to improve maintainability and performance by 80%.",
-    "My expertise spans across full-stack development, machine learning, and deep learning. I have contributed to significant projects like Pakistan Telecommunication Authority's DIRBS portal and developed ensemble deep learning models for precise thalassemia classification. I specialize in React.js, Python, TensorFlow, and various AI technologies, with a strong focus on creating scalable solutions and intelligent systems.",
+    "My expertise spans across full-stack development, machine learning, and deep learning. I have contributed to significant projects and developed ensemble deep learning models for precise Thalassemia classification. I specialize in React.js, Python, TensorFlow, and various AI technologies, with a strong focus on creating scalable solutions and intelligent systems.",
   ],
 };
