@@ -10,41 +10,41 @@ export default function Loader({ isLoading }: LoaderProps) {
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center 
-                 bg-gradient-to-r from-indigo-700 via-cyan-600 to-emerald-600 
+                 bg-gradient-to-r from-pink-200 via-sky-200 to-lime-200 
                  animate-gradient"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
       <div className="text-center">
-        {/* Spinner with glow */}
+        {/* Elegant Spinner */}
         <motion.div
-          className="relative w-24 h-24 mx-auto mb-10"
+          className="relative w-20 h-20 mx-auto mb-10"
           animate={{ rotate: 360 }}
           transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
         >
-          <div className="absolute inset-0 rounded-full border-4 border-white/30" />
-          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-white drop-shadow-xl" />
+          <div className="absolute inset-0 rounded-full border-4 border-white/50" />
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-pink-400 drop-shadow-lg" />
         </motion.div>
 
         {/* Animated text */}
         <motion.div
-          className="space-y-4"
-          initial={{ opacity: 0, y: 30 }}
+          className="space-y-3"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
         >
           <motion.h2
-            className="text-3xl font-extrabold 
-                       bg-gradient-to-r from-yellow-300 via-cyan-300 to-purple-400 
-                       bg-clip-text text-transparent drop-shadow-lg"
+            className="text-2xl font-bold 
+                       bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 
+                       bg-clip-text text-transparent drop-shadow-md"
             animate={{ scale: [1, 1.05, 1], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             Jamil Ur Rahman
           </motion.h2>
           <motion.p
-            className="text-lg text-white/90"
+            className="text-base text-gray-700"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
@@ -52,34 +52,36 @@ export default function Loader({ isLoading }: LoaderProps) {
           </motion.p>
         </motion.div>
 
-        {/* Pulsing dots */}
+        {/* Pulsing pastel dots */}
         <motion.div
           className="flex justify-center space-x-3 mt-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
+          transition={{ delay: 0.7 }}
         >
-          {[0, 1, 2, 3].map((i) => (
-            <motion.div
-              key={i}
-              className="w-3 h-3 rounded-full bg-white shadow-lg"
-              animate={{ y: [0, -12, 0], opacity: [0.5, 1, 0.5] }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                delay: i * 0.25,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
+          {["bg-pink-400", "bg-sky-400", "bg-purple-400", "bg-lime-400"].map(
+            (color, i) => (
+              <motion.div
+                key={i}
+                className={`w-3 h-3 rounded-full ${color} shadow-md`}
+                animate={{ y: [0, -10, 0], opacity: [0.5, 1, 0.5] }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  delay: i * 0.25,
+                  ease: "easeInOut",
+                }}
+              />
+            )
+          )}
         </motion.div>
       </div>
 
-      {/* Animated background gradient */}
+      {/* Light background gradient animation */}
       <style jsx>{`
         .animate-gradient {
           background-size: 400% 400%;
-          animation: gradientShift 14s ease infinite;
+          animation: gradientShift 16s ease infinite;
         }
         @keyframes gradientShift {
           0% {
