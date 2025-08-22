@@ -125,38 +125,79 @@ export default function Achievements() {
         <FadeIn delay={0.4}>
           <div className="mt-16 bg-white rounded-3xl p-8 shadow-lg border border-slate-200">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {/* Major Achievements */}
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-xl mb-3">
-                  <Trophy className="w-6 h-6 text-yellow-600" />
+                <div
+                  className="inline-flex items-center justify-center w-14 h-14 
+                     bg-gradient-to-br from-yellow-400 to-orange-500 
+                     rounded-2xl shadow-lg mb-3"
+                >
+                  <Trophy className="w-7 h-7 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-slate-800 mb-1">
+                <div
+                  className="text-3xl font-bold mb-1 
+                        bg-gradient-to-r from-yellow-500 to-orange-600 
+                        bg-clip-text text-transparent"
+                >
                   {achievements.length}
                 </div>
                 <div className="text-sm text-slate-600">Major Achievements</div>
               </div>
+
+              {/* Research Place */}
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl mb-3">
-                  <Award className="w-6 h-6 text-blue-600" />
+                <div
+                  className="inline-flex items-center justify-center w-14 h-14 
+                     bg-gradient-to-br from-blue-500 to-indigo-600 
+                     rounded-2xl shadow-lg mb-3"
+                >
+                  <Award className="w-7 h-7 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-slate-800 mb-1">
+                <div
+                  className="text-3xl font-bold mb-1 
+                        bg-gradient-to-r from-blue-500 to-indigo-600 
+                        bg-clip-text text-transparent"
+                >
                   1st
                 </div>
                 <div className="text-sm text-slate-600">Place Research</div>
               </div>
+
+              {/* Model Accuracy */}
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl mb-3">
-                  <Star className="w-6 h-6 text-green-600" />
+                <div
+                  className="inline-flex items-center justify-center w-14 h-14 
+                     bg-gradient-to-br from-green-500 to-emerald-600 
+                     rounded-2xl shadow-lg mb-3"
+                >
+                  <Star className="w-7 h-7 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-slate-800 mb-1">
-                  95%
+                <div
+                  className="text-3xl font-bold mb-1 
+                        bg-gradient-to-r from-green-500 to-emerald-600 
+                        bg-clip-text text-transparent"
+                >
+                  75%
                 </div>
                 <div className="text-sm text-slate-600">Model Accuracy</div>
               </div>
+
+              {/* Years Progress */}
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl mb-3">
-                  <Calendar className="w-6 h-6 text-purple-600" />
+                <div
+                  className="inline-flex items-center justify-center w-14 h-14 
+                     bg-gradient-to-br from-purple-500 to-pink-600 
+                     rounded-2xl shadow-lg mb-3"
+                >
+                  <Calendar className="w-7 h-7 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-slate-800 mb-1">4</div>
+                <div
+                  className="text-3xl font-bold mb-1 
+                        bg-gradient-to-r from-purple-500 to-pink-600 
+                        bg-clip-text text-transparent"
+                >
+                  4
+                </div>
                 <div className="text-sm text-slate-600">Years Progress</div>
               </div>
             </div>
