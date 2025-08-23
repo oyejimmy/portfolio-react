@@ -3,24 +3,42 @@ import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Calendar, Shield, Award } from "lucide-react";
-import { certificates, certificateCategories, Certificate } from "@/data/certificates";
+import {
+  ExternalLink,
+  Calendar,
+  Shield,
+  Award,
+  Layers,
+  Cpu,
+} from "lucide-react"; // added more icons
+import {
+  certificates,
+  certificateCategories,
+  Certificate,
+} from "@/data/certificates";
 
 export default function Certificates() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [visibleCount, setVisibleCount] = useState(6);
 
-  const filteredCertificates = selectedCategory === 'all' 
-    ? certificates 
-    : certificates.filter(cert => cert.category === selectedCategory);
+  const filteredCertificates =
+    selectedCategory === "all"
+      ? certificates
+      : certificates.filter((cert) => cert.category === selectedCategory);
 
   const visibleCertificates = filteredCertificates.slice(0, visibleCount);
 
   const loadMore = () => {
-    setVisibleCount(prev => Math.min(prev + 6, filteredCertificates.length));
+    setVisibleCount((prev) => Math.min(prev + 6, filteredCertificates.length));
   };
 
-  const CertificateCard = ({ certificate, index }: { certificate: Certificate; index: number }) => (
+  const CertificateCard = ({
+    certificate,
+    index,
+  }: {
+    certificate: Certificate;
+    index: number;
+  }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -31,11 +49,15 @@ export default function Certificates() {
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
-          <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center ${certificate.color}`}>
+          <div
+            className={`w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center ${certificate.color}`}
+          >
             <i className={`${certificate.icon} text-xl`}></i>
           </div>
           <div>
-            <h3 className="font-semibold text-slate-800 text-lg leading-tight">{certificate.title}</h3>
+            <h3 className="font-semibold text-slate-800 text-lg leading-tight">
+              {certificate.title}
+            </h3>
             <p className="text-slate-600 text-sm">{certificate.issuer}</p>
           </div>
         </div>
@@ -75,9 +97,9 @@ export default function Certificates() {
 
         <div className="flex flex-wrap gap-2">
           {certificate.skills.map((skill, skillIndex) => (
-            <Badge 
-              key={skillIndex} 
-              variant="secondary" 
+            <Badge
+              key={skillIndex}
+              variant="secondary"
               className="text-xs bg-slate-100 text-slate-700 hover:bg-slate-200"
             >
               {skill}
@@ -87,8 +109,16 @@ export default function Certificates() {
       </div>
 
       <div className="flex items-center justify-between">
-        <Badge className={certificateCategories.find(cat => cat.id === certificate.category)?.color}>
-          {certificateCategories.find(cat => cat.id === certificate.category)?.name}
+        <Badge
+          className={
+            certificateCategories.find((cat) => cat.id === certificate.category)
+              ?.color
+          }
+        >
+          {
+            certificateCategories.find((cat) => cat.id === certificate.category)
+              ?.name
+          }
         </Badge>
         <div className="flex items-center space-x-1 text-indigo-600">
           <Award className="w-4 h-4" />
@@ -116,8 +146,9 @@ export default function Certificates() {
               Professional Certificates
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Industry-recognized certifications showcasing expertise across cloud platforms, 
-              development frameworks, and emerging technologies.
+              Industry-recognized certifications showcasing expertise across
+              cloud platforms, development frameworks, and emerging
+              technologies.
             </p>
           </div>
         </FadeIn>
@@ -126,27 +157,33 @@ export default function Certificates() {
         <FadeIn delay={0.2}>
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             <Button
-              onClick={() => setSelectedCategory('all')}
-              variant={selectedCategory === 'all' ? 'default' : 'outline'}
-              className={`${selectedCategory === 'all' 
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white' 
-                : 'border-slate-300 text-slate-600 hover:bg-slate-50'
+              onClick={() => setSelectedCategory("all")}
+              variant={selectedCategory === "all" ? "default" : "outline"}
+              className={`${
+                selectedCategory === "all"
+                  ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
+                  : "border-slate-300 text-slate-600 hover:bg-slate-50"
               }`}
             >
               All Certificates ({certificates.length})
             </Button>
             {certificateCategories.map((category) => {
-              const count = certificates.filter(cert => cert.category === category.id).length;
+              const count = certificates.filter(
+                (cert) => cert.category === category.id
+              ).length;
               if (count === 0) return null;
-              
+
               return (
                 <Button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  variant={selectedCategory === category.id ? 'default' : 'outline'}
-                  className={`${selectedCategory === category.id 
-                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white' 
-                    : 'border-slate-300 text-slate-600 hover:bg-slate-50'
+                  variant={
+                    selectedCategory === category.id ? "default" : "outline"
+                  }
+                  className={`${
+                    selectedCategory === category.id
+                      ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
+                      : "border-slate-300 text-slate-600 hover:bg-slate-50"
                   }`}
                 >
                   {category.name} ({count})
@@ -159,10 +196,10 @@ export default function Certificates() {
         {/* Certificates Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {visibleCertificates.map((certificate, index) => (
-            <CertificateCard 
-              key={certificate.id} 
-              certificate={certificate} 
-              index={index} 
+            <CertificateCard
+              key={certificate.id}
+              certificate={certificate}
+              index={index}
             />
           ))}
         </div>
@@ -175,7 +212,8 @@ export default function Certificates() {
                 onClick={loadMore}
                 className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300"
               >
-                Load More Certificates ({filteredCertificates.length - visibleCount} remaining)
+                Load More Certificates (
+                {filteredCertificates.length - visibleCount} remaining)
               </Button>
             </div>
           </FadeIn>
@@ -186,26 +224,51 @@ export default function Certificates() {
           <div className="mt-16 bg-white rounded-3xl p-8 shadow-lg border border-slate-200">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-indigo-600 mb-2">{certificates.length}</div>
-                <div className="text-sm text-slate-600">Total Certificates</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-2">
-                  {certificates.filter(cert => cert.expiryDate).length}
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 mb-3">
+                  <Award className="w-7 h-7 text-white" />
                 </div>
-                <div className="text-sm text-slate-600">Active Certifications</div>
+                <div className="text-3xl font-bold text-indigo-600 mb-1">
+                  {certificates.length}
+                </div>
+                <div className="text-sm font-medium text-slate-700">
+                  Total Certificates
+                </div>
               </div>
+
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 mb-3">
+                  <Shield className="w-7 h-7 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-purple-600 mb-1">
+                  {certificates.filter((cert) => cert.expiryDate).length}
+                </div>
+                <div className="text-sm font-medium text-slate-700">
+                  Active Certifications
+                </div>
+              </div>
+
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 mb-3">
+                  <Layers className="w-7 h-7 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-blue-600 mb-1">
                   {certificateCategories.length - 1}
                 </div>
-                <div className="text-sm text-slate-600">Skill Areas</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">
-                  {new Set(certificates.flatMap(cert => cert.skills)).size}
+                <div className="text-sm font-medium text-slate-700">
+                  Skill Areas
                 </div>
-                <div className="text-sm text-slate-600">Technologies</div>
+              </div>
+
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 mb-3">
+                  <Cpu className="w-7 h-7 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-green-600 mb-1">
+                  {new Set(certificates.flatMap((cert) => cert.skills)).size}
+                </div>
+                <div className="text-sm font-medium text-slate-700">
+                  Technologies
+                </div>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Clock, Globe, Mail } from "lucide-react";
+import { MapPin, Clock, Globe, Mail, Wifi } from "lucide-react";
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { personalInfo } from "@/data/personal";
 import {
@@ -14,10 +14,14 @@ export default function Location() {
   return (
     <section
       id="location"
-      className="py-20 bg-white"
+      className="py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden"
       data-testid="location-section"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Background Gradient Orbs */}
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-indigo-200 rounded-full blur-3xl opacity-30"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-200 rounded-full blur-3xl opacity-30"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Heading with icon */}
         <motion.div className="text-center mb-16" {...fadeInUp}>
           <motion.div
@@ -25,23 +29,26 @@ export default function Location() {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 200 }}
-            className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mb-6"
+            className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl shadow-lg mb-6"
           >
             <MapPin className="w-8 h-8 text-white" />
           </motion.div>
 
           <h2
-            className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent"
+            className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
             data-testid="location-title"
           >
             Location & Availability
           </h2>
 
-          <div className="w-24 h-1 animated-gradient mx-auto rounded-full mb-6"></div>
+          <div className="w-28 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full mb-6"></div>
 
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Currently based in {personalInfo.location} and available for remote
-            collaboration worldwide.
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Currently based in{" "}
+            <span className="font-semibold text-indigo-600">
+              {personalInfo.location}
+            </span>{" "}
+            and available for remote collaboration worldwide.
           </p>
         </motion.div>
 
@@ -53,9 +60,10 @@ export default function Location() {
             {...slideInLeft}
             data-testid="location-info"
           >
-            <div className="bg-gradient-to-r from-indigo-50/80 to-purple-50/80 rounded-2xl p-8 border border-indigo-100">
+            {/* Location Card */}
+            <div className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 border border-indigo-100 shadow-xl">
               <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mr-6">
+                <div className="w-16 h-16 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mr-6 shadow-md">
                   <MapPin className="text-white text-2xl" />
                 </div>
                 <div>
@@ -70,13 +78,14 @@ export default function Location() {
               <p className="text-slate-600 mb-6 leading-relaxed">
                 Based in Pakistan's capital city with extensive experience
                 working with international teams across different time zones.
-                Bringing a global perspective to every project while maintaining
-                strong local connections.
+                Bringing a global perspective while maintaining strong local
+                connections.
               </p>
 
+              {/* Quick Info */}
               <div className="grid grid-cols-2 gap-4">
                 <motion.div
-                  className="text-center p-4 bg-white rounded-lg"
+                  className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg shadow-sm"
                   {...hoverLift}
                   data-testid="timezone-info"
                 >
@@ -84,7 +93,7 @@ export default function Location() {
                   <div className="text-slate-600 text-sm">Time Zone</div>
                 </motion.div>
                 <motion.div
-                  className="text-center p-4 bg-white rounded-lg"
+                  className="text-center p-4 bg-gradient-to-br from-purple-50 to-indigo-100 rounded-lg shadow-sm"
                   {...hoverLift}
                   data-testid="work-style-info"
                 >
@@ -112,10 +121,10 @@ export default function Location() {
                   </a>
                 </div>
                 <div className="flex items-center">
-                  <Globe className="text-indigo-600 text-lg mr-4" />
+                  <Globe className="text-purple-600 text-lg mr-4" />
                   <a
                     href={SOCIAL_LINKS.linkedin}
-                    className="text-slate-600 hover:text-indigo-600 transition-colors"
+                    className="text-slate-600 hover:text-purple-600 transition-colors"
                     data-testid="location-linkedin-link"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -124,7 +133,7 @@ export default function Location() {
                   </a>
                 </div>
                 <div className="flex items-center">
-                  <Clock className="text-indigo-600 text-lg mr-4" />
+                  <Clock className="text-green-600 text-lg mr-4" />
                   <span className="text-slate-600">
                     Available 9 AM - 6 PM PKT
                   </span>
@@ -134,7 +143,7 @@ export default function Location() {
 
             {/* Availability Status */}
             <motion.div
-              className="bg-green-50 border border-green-200 rounded-xl p-6"
+              className="bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-2xl p-6 shadow-md"
               {...hoverLift}
               data-testid="availability-status"
             >
@@ -169,10 +178,10 @@ export default function Location() {
             {...slideInRight}
             data-testid="location-map"
           >
-            <div className="bg-slate-100 rounded-2xl overflow-hidden shadow-xl">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
               <div className="relative h-96">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212270.5667958663!2d72.82079822539756!3d33.61619864894985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbfd07891722f%3A0x6059515c3bdb02b4!2sIslamabad%2C%20Islamabad%20Capital%20Territory%2C%20Pakistan!5e0!3m2!1sen!2s!4v1699123456789!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212270.5667958663!2d72.82079822539756!3d33.61619864894985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbfd07891722f%3A0x6059515c3bdb02b4!2sIslamabad%2C%20Pakistan!5e0!3m2!1sen!2s!4v1699123456789!5m2!1sen!2s"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -197,12 +206,12 @@ export default function Location() {
 
             {/* Floating Card */}
             <motion.div
-              className="absolute -top-4 -right-4 bg-white rounded-xl p-4 shadow-xl"
+              className="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-xl border border-indigo-100"
               {...floatingAnimation}
               data-testid="global-collaboration-card"
             >
               <div className="flex items-center space-x-2">
-                <Globe className="text-green-600 text-xl" />
+                <Wifi className="text-indigo-600 text-xl" />
                 <div>
                   <div className="font-semibold text-slate-800">Global</div>
                   <div className="text-sm text-slate-500">Collaboration</div>
@@ -214,7 +223,7 @@ export default function Location() {
 
         {/* Coverage Areas */}
         <motion.div
-          className="mt-16 bg-gray-50 rounded-2xl p-8"
+          className="mt-16 bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-slate-200"
           {...fadeInUp}
           transition={{ delay: 0.6 }}
           data-testid="coverage-areas"
@@ -228,7 +237,7 @@ export default function Location() {
               {...hoverLift}
               data-testid="coverage-local"
             >
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                 <MapPin className="text-blue-600 text-2xl" />
               </div>
               <h4 className="font-semibold text-slate-800 mb-2">
@@ -243,7 +252,7 @@ export default function Location() {
               {...hoverLift}
               data-testid="coverage-regional"
             >
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                 <Globe className="text-purple-600 text-2xl" />
               </div>
               <h4 className="font-semibold text-slate-800 mb-2">Regional</h4>
@@ -256,7 +265,7 @@ export default function Location() {
               {...hoverLift}
               data-testid="coverage-global"
             >
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                 <Globe className="text-green-600 text-2xl" />
               </div>
               <h4 className="font-semibold text-slate-800 mb-2">

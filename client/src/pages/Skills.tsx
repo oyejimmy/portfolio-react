@@ -3,22 +3,48 @@ import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Code, Database, Brain, Cloud, Wrench } from "lucide-react";
+
+// Colorful dev icons
+import { FaJs, FaReact, FaBrain, FaTools, FaCloud } from "react-icons/fa";
 import { skillCategories } from "@/data/skills";
 
-const categoryIcons: Record<string, any> = {
-  "Frontend Development": Code,
-  "Backend Development": Database,
-  "Data Science & AI": Brain,
-  "Database & Cloud": Cloud,
-  "Tools & DevOps": Wrench,
+// ✅ Icons with gradients
+const categoryIcons: Record<
+  string,
+  { icon: any; gradient: string; textColor: string }
+> = {
+  "Languages & Programming": {
+    icon: FaJs,
+    gradient: "from-yellow-400 to-orange-500",
+    textColor: "text-yellow-500",
+  },
+  "Frontend Frameworks & Libraries": {
+    icon: FaReact,
+    gradient: "from-blue-500 to-cyan-500",
+    textColor: "text-blue-500",
+  },
+  "Data Science & Machine Learning": {
+    icon: FaBrain,
+    gradient: "from-green-500 to-emerald-600",
+    textColor: "text-green-600",
+  },
+  "Tools & Development": {
+    icon: FaTools,
+    gradient: "from-purple-500 to-pink-500",
+    textColor: "text-purple-600",
+  },
+  "Cloud & Analytics": {
+    icon: FaCloud,
+    gradient: "from-indigo-500 to-purple-600",
+    textColor: "text-indigo-600",
+  },
 };
 
 export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-white py-20">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
           {/* Section Heading */}
@@ -30,7 +56,7 @@ export default function Skills() {
               transition={{ type: "spring", stiffness: 200 }}
               className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mb-6"
             >
-              <Code className="w-8 h-8 text-white" />
+              <FaJs className="w-8 h-8 text-white" />
             </motion.div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               Skills & Technologies
@@ -46,7 +72,9 @@ export default function Skills() {
         {/* Interactive Category Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {skillCategories.map((category, index) => {
-            const IconComponent = categoryIcons[category.title] || Code;
+            const { icon: IconComponent, gradient } =
+              categoryIcons[category.title] ||
+              categoryIcons["Languages & Programming"];
             const isSelected = selectedCategory === category.title;
 
             return (
@@ -68,17 +96,9 @@ export default function Skills() {
               >
                 <div className="flex items-center space-x-4 mb-4">
                   <div
-                    className={`p-3 rounded-xl ${
-                      isSelected
-                        ? "bg-gradient-to-br from-indigo-600 to-purple-600"
-                        : "bg-slate-100"
-                    }`}
+                    className={`p-3 rounded-xl bg-gradient-to-br ${gradient}`}
                   >
-                    <IconComponent
-                      className={`w-6 h-6 ${
-                        isSelected ? "text-white" : "text-slate-600"
-                      }`}
-                    />
+                    <IconComponent className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-slate-800">
                     {category.title}
@@ -89,6 +109,7 @@ export default function Skills() {
                   {category.skills.length} technologies
                 </p>
 
+                {/* Skills preview badges */}
                 <motion.div
                   initial={false}
                   animate={{
@@ -131,10 +152,15 @@ export default function Skills() {
               <div className="text-center mb-8">
                 <div className="flex items-center justify-center space-x-3 mb-4">
                   {(() => {
-                    const IconComponent =
-                      categoryIcons[selectedCategory] || Code;
+                    const { icon: IconComponent, gradient } =
+                      categoryIcons[selectedCategory] ||
+                      categoryIcons["Languages & Programming"];
                     return (
-                      <IconComponent className="w-8 h-8 text-indigo-600" />
+                      <div
+                        className={`p-3 rounded-xl bg-gradient-to-br ${gradient}`}
+                      >
+                        <IconComponent className="w-7 h-7 text-white" />
+                      </div>
                     );
                   })()}
                   <h3 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -189,17 +215,28 @@ export default function Skills() {
           <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
               {skillCategories.map((category) => {
-                const IconComponent = categoryIcons[category.title] || Code;
+                const { icon: IconComponent, gradient } =
+                  categoryIcons[category.title] ||
+                  categoryIcons["Languages & Programming"];
                 return (
                   <div key={category.title} className="text-center">
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl mb-3">
-                      <IconComponent className="w-6 h-6 text-indigo-600" />
+                    <div
+                      className={`inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br ${gradient} rounded-2xl shadow-lg mb-3`}
+                    >
+                      <IconComponent className="w-7 h-7 text-white" />
                     </div>
-                    <div className="text-2xl font-bold text-slate-800 mb-1">
+                    <div
+                      className={`text-3xl font-bold mb-1 bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}
+                    >
                       {category.skills.length}
                     </div>
                     <div className="text-sm text-slate-600 leading-tight">
-                      {category.title.split(" ")[0]} Skills
+                      {category.title.includes("Languages") &&
+                        "Languages Skills"}
+                      {category.title.includes("Frontend") && "Frontend Skills"}
+                      {category.title.includes("Data") && "Data Skills"}
+                      {category.title.includes("Tools") && "Tools Skills"}
+                      {category.title.includes("Cloud") && "Cloud Skills"}
                     </div>
                   </div>
                 );

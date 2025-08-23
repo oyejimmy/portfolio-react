@@ -9,29 +9,54 @@ import {
   Link,
   Send,
 } from "lucide-react";
-import { SOCIAL_LINKS, NAVIGATION_ITEMS } from "@/lib/constants";
+import { NAVIGATION_ITEMS } from "@/lib/constants";
+import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
     {
-      href: SOCIAL_LINKS.github,
-      icon: Github,
+      href: "https://github.com/yourusername",
+      icon: <Github className="w-5 h-5" />,
       label: "GitHub",
-      color: "hover:text-gray-300",
+      bg: "bg-[#181717]",
+      hover: "hover:bg-black",
     },
     {
-      href: SOCIAL_LINKS.linkedin,
-      icon: Linkedin,
+      href: "https://linkedin.com/in/yourusername",
+      icon: <Linkedin className="w-5 h-5" />,
       label: "LinkedIn",
-      color: "hover:text-blue-300",
+      bg: "bg-[#0A66C2]",
+      hover: "hover:bg-blue-700",
     },
     {
-      href: `mailto:${SOCIAL_LINKS.email}`,
-      icon: Mail,
+      href: "mailto:jamirahm2@gmail.com",
+      icon: <Mail className="w-5 h-5" />,
       label: "Email",
-      color: "hover:text-purple-300",
+      bg: "bg-purple-600",
+      hover: "hover:bg-purple-700",
+    },
+    {
+      href: "https://wa.me/923121999696",
+      icon: <FaWhatsapp className="w-5 h-5" />,
+      label: "WhatsApp",
+      bg: "bg-[#25D366]",
+      hover: "hover:bg-green-600",
+    },
+    {
+      href: "https://www.instagram.com/imjamilrahman?igsh=M3F6OWc2eDg5dmtv",
+      icon: <FaInstagram className="w-5 h-5" />,
+      label: "Instagram",
+      bg: "bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600",
+      hover: "hover:opacity-90",
+    },
+    {
+      href: "https://facebook.com/yourusername",
+      icon: <FaFacebook className="w-5 h-5" />,
+      label: "Facebook",
+      bg: "bg-[#1877F2]",
+      hover: "hover:bg-blue-700",
     },
   ];
 
@@ -70,33 +95,24 @@ export default function Footer() {
               </p>
 
               {/* Social Links */}
-              <div className="flex justify-center lg:justify-start space-x-4">
-                {socialLinks.map((social, index) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <motion.a
-                      key={social.label}
-                      href={social.href}
-                      target={
-                        social.href.startsWith("http") ? "_blank" : undefined
-                      }
-                      rel={
-                        social.href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      className={`p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-gray-300 ${social.color} transition-all duration-300 hover:bg-white/20 hover:transform hover:scale-110`}
-                      whileHover={{ y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 + 0.3 }}
-                    >
-                      <IconComponent className="w-5 h-5" />
-                    </motion.a>
-                  );
-                })}
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-3 rounded-full ${social.bg} ${social.hover} transition-all duration-300 shadow-md`}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.3 }}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
               </div>
             </motion.div>
 
@@ -146,16 +162,16 @@ export default function Footer() {
                 <div className="flex items-center justify-center lg:justify-start text-gray-300">
                   <Mail className="w-4 h-4 mr-3 text-purple-400" />
                   <a
-                    href={`mailto:${SOCIAL_LINKS.email}`}
+                    href="mailto:jamirahm2@gmail.com"
                     className="hover:text-white transition-colors"
                   >
-                    {SOCIAL_LINKS.email}
+                    jamirahm2@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center justify-center lg:justify-start text-gray-300">
                   <Github className="w-4 h-4 mr-3 text-gray-400" />
                   <a
-                    href={SOCIAL_LINKS.github}
+                    href="https://github.com/oyejimmy"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"
@@ -166,7 +182,7 @@ export default function Footer() {
                 <div className="flex items-center justify-center lg:justify-start text-gray-300">
                   <Linkedin className="w-4 h-4 mr-3 text-blue-400" />
                   <a
-                    href={SOCIAL_LINKS.linkedin}
+                    href="https://www.linkedin.com/in/jamilurahman/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"
