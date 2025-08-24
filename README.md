@@ -1,4 +1,4 @@
-# Jamil Ur Rahman - Portfolio
+# Jamil Ur Rahman
 
 A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS.
 
