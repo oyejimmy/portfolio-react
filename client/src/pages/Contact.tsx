@@ -1,23 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FadeIn } from "@/components/ui/fade-in";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Download } from "lucide-react";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
+import { Send, Phone, MapPin, Clock } from "lucide-react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { personalInfo } from "@/data/personal";
-import SectionWrapper from "@/components/SectionWrapper";
-import { SiWhatsapp } from "react-icons/si";
 
 interface ContactForm {
   firstName: string;
@@ -26,6 +17,25 @@ interface ContactForm {
   subject: string;
   message: string;
 }
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState<ContactForm>({
@@ -57,8 +67,7 @@ export default function Contact() {
 
     toast({
       title: "Opening email client...",
-      description:
-        "Your default email client should open with the message pre-filled.",
+      description: "Compose your message in your default email client.",
     });
 
     setFormData({
@@ -70,270 +79,258 @@ export default function Contact() {
     });
   };
 
-  const contactInfo = [
+  const contactMethods = [
     {
-      icon: <FaEnvelope className="text-white w-6 h-6" />,
+      icon: <Phone className="w-5 h-5" />,
+      title: "Phone",
+      value: personalInfo.phone || "+92 312 1999696",
+      href: "tel:+923121999696",
+    },
+    {
+      icon: <FaEnvelope className="w-5 h-5" />,
       title: "Email",
       value: SOCIAL_LINKS.email,
       href: `mailto:${SOCIAL_LINKS.email}`,
-      bg: "from-pink-400 to-red-500",
     },
     {
-      icon: <FaLinkedin className="text-white w-6 h-6" />,
-      title: "LinkedIn",
-      value: "linkedin.com/in/jamilurahman",
-      href: SOCIAL_LINKS.linkedin,
-      bg: "from-blue-500 to-cyan-600",
-    },
-    {
-      icon: <FaGithub className="text-white w-6 h-6" />,
-      title: "GitHub",
-      value: "github.com/jamilurahman",
-      href: SOCIAL_LINKS.github,
-      bg: "from-gray-800 to-gray-700",
-    },
-    {
-      icon: <SiWhatsapp className="text-white w-6 h-6" />,
-      title: "WhatsApp",
-      value: "+92 312 1999696",
-      href: "https://wa.me/923121999696",
-      bg: "from-green-400 to-green-600",
-    },
-    {
-      icon: <FaMapMarkerAlt className="text-white w-6 h-6" />,
+      icon: <MapPin className="w-5 h-5" />,
       title: "Location",
       value: personalInfo.location,
       href: "https://www.google.com/maps/place/Islamabad,+Pakistan",
-      bg: "from-green-500 to-emerald-600",
+    },
+    {
+      icon: <Clock className="w-5 h-5" />,
+      title: "Response Time",
+      value: "Within 24 hours",
+      href: "#",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn>
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 200 }}
-              className="inline-flex items-center justify-center w-16 h-16 
-                         bg-gradient-to-br from-indigo-600 to-purple-600 
-                         rounded-2xl mb-6 shadow-lg"
+    <div className="min-h-screen bg-background py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6"
+            whileHover={{ scale: 1.1 }}
+          >
+            <Send className="w-8 h-8 text-primary" />
+          </motion.div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">
+            Get In Touch
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Have a question or want to collaborate? I'd love to hear from you. 
+            Let's connect and create something amazing together.
+          </p>
+        </motion.div>
+
+        {/* Quick Contact Methods */}
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {contactMethods.map((method, index) => (
+            <motion.a
+              key={index}
+              href={method.href}
+              target={method.href.startsWith("http") && method.href !== "#" ? "_blank" : undefined}
+              rel={method.href.startsWith("http") && method.href !== "#" ? "noopener noreferrer" : undefined}
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              className="p-4 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all group"
             >
-              <FaEnvelope className="w-7 h-7 text-white" />
-            </motion.div>
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-6 
-                           bg-gradient-to-r from-indigo-600 to-purple-600 
-                           bg-clip-text text-transparent"
-            >
-              Get In Touch
-            </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              I'm always interested in new opportunities and exciting projects.
-              Let's connect and discuss how we can work together.
-            </p>
-          </div>
-        </FadeIn>
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors mb-3">
+                {method.icon}
+              </div>
+              <h3 className="font-semibold text-sm mb-1">{method.title}</h3>
+              <p className="text-xs text-muted-foreground truncate">{method.value}</p>
+            </motion.a>
+          ))}
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info with 3D Social Icons */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-8">Let's Connect</h3>
-            <div className="space-y-6 mb-8">
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05, rotate: 1 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="flex items-center space-x-4 cursor-pointer"
-                >
-                  <div
-                    className={`w-14 h-14 bg-gradient-to-br ${info.bg} 
-                               rounded-2xl flex items-center justify-center 
-                               shadow-md hover:shadow-xl transform hover:-rotate-3 
-                               transition duration-300`}
-                  >
-                    {info.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">{info.title}</h4>
-                    {info.href === "#" ? (
-                      <p className="text-portfolio-secondary">{info.value}</p>
-                    ) : (
-                      <a
-                        href={info.href}
-                        className="text-portfolio-secondary hover:text-primary transition-colors"
-                        target={
-                          info.href.startsWith("http") ? "_blank" : undefined
-                        }
-                        rel={
-                          info.href.startsWith("http")
-                            ? "noopener noreferrer"
-                            : undefined
-                        }
-                      >
-                        {info.value}
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <Button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 px-8 py-3 rounded-xl font-semibold shadow-lg">
-              <a
-                href="/JamilUrRahmanCV.pdf"
-                download
-                className="flex items-center"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
-              </a>
-            </Button>
-          </div>
-
+        {/* Main Content */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Form */}
-          <Card className="bg-white shadow-lg border border-slate-200 rounded-2xl">
-            <CardContent className="p-8">
-              <form onSubmit={handleSubmit}>
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <Label
-                      htmlFor="firstName"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      First Name
-                    </Label>
-                    <Input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      placeholder="Enter your first name"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full"
-                    />
-                  </div>
-                  <div>
-                    <Label
-                      htmlFor="lastName"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Last Name
-                    </Label>
-                    <Input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      placeholder="Enter your last name"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="w-full"
-                    />
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <Label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Email Address
-                  </Label>
-                  <Input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="you@example.com"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full"
-                  />
-                </div>
-
-                <div className="mb-6">
-                  <Label
-                    htmlFor="subject"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Subject
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="p-8 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm"
+          >
+            <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="firstName" className="text-sm mb-2">
+                    First Name
                   </Label>
                   <Input
                     type="text"
-                    id="subject"
-                    name="subject"
+                    id="firstName"
+                    name="firstName"
                     required
-                    placeholder="What’s this about?"
-                    value={formData.subject}
+                    placeholder="John"
+                    value={formData.firstName}
                     onChange={handleInputChange}
-                    className="w-full"
+                    className="bg-background/50 border-border/30"
                   />
                 </div>
-
-                <div className="mb-6">
-                  <Label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Message
+                <div>
+                  <Label htmlFor="lastName" className="text-sm mb-2">
+                    Last Name
                   </Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    rows={5}
+                  <Input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
                     required
-                    placeholder="Write your message here..."
-                    value={formData.message}
+                    placeholder="Doe"
+                    value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full resize-none"
+                    className="bg-background/50 border-border/30"
                   />
                 </div>
+              </div>
 
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 px-8 py-3 rounded-xl font-semibold shadow-lg"
+              <div>
+                <Label htmlFor="email" className="text-sm mb-2">
+                  Email Address
+                </Label>
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="john@example.com"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="bg-background/50 border-border/30"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="subject" className="text-sm mb-2">
+                  Subject
+                </Label>
+                <Input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                  placeholder="Project Inquiry"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="bg-background/50 border-border/30"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="message" className="text-sm mb-2">
+                  Message
+                </Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                  placeholder="Tell me about your message..."
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="bg-background/50 border-border/30 resize-none"
+                />
+              </div>
+
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full py-3 rounded-lg bg-gradient-primary text-white font-semibold shadow-lg hover:shadow-xl transition-all"
+              >
+                Send Message
+              </motion.button>
+            </form>
+          </motion.div>
+
+          {/* Social Links & Info */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <div>
+              <h2 className="text-2xl font-bold mb-4">Connect With Me</h2>
+              <p className="text-muted-foreground mb-8">
+                Follow me on social platforms to stay connected and see my latest projects!
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                { 
+                  icon: <FaGithub className="w-5 h-5" />, 
+                  label: "GitHub", 
+                  url: SOCIAL_LINKS.github,
+                  desc: "View my repositories"
+                },
+                { 
+                  icon: <FaLinkedin className="w-5 h-5" />, 
+                  label: "LinkedIn", 
+                  url: SOCIAL_LINKS.linkedin,
+                  desc: "Professional profile"
+                },
+                { 
+                  icon: <FaEnvelope className="w-5 h-5" />, 
+                  label: "Email", 
+                  url: `mailto:${SOCIAL_LINKS.email}`,
+                  desc: "Direct contact"
+                },
+              ].map((social, i) => (
+                <motion.a
+                  key={i}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ x: 8 }}
+                  className="flex items-center gap-4 p-4 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all group"
                 >
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+                  <div className="w-10 h-10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/10 rounded-lg">
+                    {social.icon}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground text-sm">{social.label}</p>
+                    <p className="text-xs text-muted-foreground">{social.desc}</p>
+                  </div>
+                  <span className="text-muted-foreground group-hover:text-primary transition-colors">→</span>
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Info Card */}
+            <div className="mt-8 p-6 rounded-xl bg-primary/5 border border-primary/20">
+              <h3 className="font-semibold mb-2 text-primary flex items-center gap-2">
+                <span className="inline-block w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                Available for Projects
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                I'm actively looking for opportunities. Expect a response within 24 hours!
+              </p>
+            </div>
+          </motion.div>
         </div>
-      </div>
-
-      {/* Map Section */}
-      <div className="mt-16">
-        <SectionWrapper background="white">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-              Find Me Here
-            </h2>
-            <div className="w-24 h-1 animated-gradient mx-auto rounded-full"></div>
-            <p className="text-lg text-portfolio-secondary mt-6 max-w-2xl mx-auto">
-              You can reach me at my workspace in F-7 Markaz, Islamabad. Here’s
-              the exact location on the map:
-            </p>
-          </div>
-
-          <div className="relative w-full h-[400px] rounded-2xl shadow-lg overflow-hidden">
-            <iframe
-              title="Google Map - F7 Islamabad Markaz"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.509185395343!2d73.0479!3d33.7294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbfd8cf73d2c7%3A0x7f6a44c77e9e0c47!2sF-7%20Markaz%2C%20Islamabad!5e0!3m2!1sen!2s!4v1692994822000!5m2!1sen!2s"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-        </SectionWrapper>
       </div>
     </div>
   );

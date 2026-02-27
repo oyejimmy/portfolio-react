@@ -73,10 +73,10 @@ export default function Skills() {
               {/* Category Header */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                  {categoryIcons[category.title as keyof typeof categoryIcons] || <Code className="w-6 h-6" />}
+                  {categoryIcons[category.category as keyof typeof categoryIcons] || <Code className="w-6 h-6" />}
                 </div>
                 <h2 className="text-2xl font-bold text-foreground">
-                  {category.title}
+                  {category.category}
                 </h2>
                 <span className="ml-auto px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
                   {category.skills.length} skills
@@ -98,7 +98,7 @@ export default function Skills() {
                     className="px-4 py-3 rounded-lg bg-background/50 border border-border/30 hover:border-primary/50 transition-all duration-200 group text-center"
                   >
                     <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                      {skill.name}
+                      {skill}
                     </p>
                   </motion.div>
                 ))}
@@ -140,4 +140,3 @@ export default function Skills() {
     </div>
   );
 }
-

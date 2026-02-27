@@ -4,9 +4,27 @@ import ProjectCard from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/data/projects";
 import { PROJECT_CATEGORIES } from "@/lib/constants";
-import { Layers } from "lucide-react"; // changed icon to match "Projects"
+import { Layers } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeInUp } from "@/lib/animations";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -17,85 +35,87 @@ export default function Projects() {
   });
 
   return (
-    <SectionWrapper background="white">
-      {/* Section Heading */}
-      <motion.div className="text-center mb-16" {...fadeInUp}>
-        {/* Animated Icon Box */}
+    <div className="min-h-screen bg-background py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
         <motion.div
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 200 }}
-          className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mb-6"
+          transition={{ duration: 0.6 }}
         >
-          <Layers className="w-8 h-8 text-white" />
-        </motion.div>
-
-        {/* Gradient Heading */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-          Projects
-        </h2>
-
-        {/* Underline */}
-        <div className="w-24 h-1 animated-gradient mx-auto rounded-full mb-6"></div>
-
-        {/* Subtitle */}
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-          A showcase of my work from experimental builds to production-ready
-          apps, highlighting creativity, functionality, and design.
-        </p>
-      </motion.div>
-
-      {/* Project Filter Buttons */}
-      <div className="flex flex-wrap justify-center gap-4 mb-12">
-        {PROJECT_CATEGORIES.map((category) => (
-          <Button
-            key={category.value}
-            onClick={() => setActiveFilter(category.value)}
-            variant={activeFilter === category.value ? "default" : "secondary"}
-            className={`px-6 py-2 rounded-full font-medium transition-colors ${
-              activeFilter === category.value
-                ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg"
-                : "bg-gray-200 text-portfolio-secondary hover:bg-gray-300"
-            }`}
-          >
-            {category.label}
-          </Button>
-        ))}
-      </div>
-
-      {/* Projects Grid */}
-      <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ staggerChildren: 0.15 }}
-      >
-        {filteredProjects.map((project, index) => (
           <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6"
+            whileHover={{ scale: 1.1 }}
           >
-            <ProjectCard project={project} />
+            <Layers className="w-8 h-8 text-primary" />
           </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Empty State */}
-      {filteredProjects.length === 0 && (
-        <motion.div
-          className="text-center py-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <p className="text-portfolio-secondary text-lg">
-            No projects found for the selected category.
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">
+            Featured Projects
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            A showcase of my recent work, from creative experiments to production-ready applications
           </p>
         </motion.div>
-      )}
-    </SectionWrapper>
-  );
-}
+
+        {/* Filter Buttons */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {[{ value: "all", label: "All" }, ...PROJECT_CATEGORIES].map((category) => (
+            <motion.button
+              key={category.value}
+              onClick={() => setActiveFilter(category.value)}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`px-6 py-2 rounded-full font-medium transition-all ${
+                activeFilter === category.value
+                  ? "bg-gradient-primary text-white shadow-lg"
+                  : "bg-card/50 text-foreground border border-border/50 hover:bg-card/80"
+              }`}
+            >
+              {category.label}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* Projects Grid */}
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <motion.div
+            className="text-center py-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <p className="text-muted-foreground text-lg">
+              No projects found for the selected category.
+            </p>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );}
