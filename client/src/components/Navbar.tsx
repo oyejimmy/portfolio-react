@@ -2,23 +2,21 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Download, Github, Linkedin } from "lucide-react";
+import { Menu, Download, Github, Linkedin, Moon, Sun } from "lucide-react";
 import { SOCIAL_LINKS } from "@/lib/constants";
+import { useTheme } from "@/context/ThemeContext";
 
 const NAVIGATION_ITEMS = [
   { path: "#home", label: "Home" },
   { path: "#about", label: "About" },
-  { path: "#achievements", label: "Achievements" },
-  { path: "#education", label: "Education" },
   { path: "#experience", label: "Experience" },
   { path: "#skills", label: "Skills" },
   { path: "#projects", label: "Projects" },
-  { path: "#certificates", label: "Certificates" },
-  { path: "#location", label: "Location" },
   { path: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
+  const { isDark, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -61,188 +59,183 @@ export default function Navbar() {
   return (
     <motion.nav
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-card shadow-2xl" : "bg-white/80 backdrop-blur-sm"
+        scrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-border/40"
+          : "bg-background/50 backdrop-blur-sm"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <motion.div
-            className="flex items-center"
+          <motion.button
+            onClick={() => scrollToSection("#home")}
+            className="flex items-center gap-3 group cursor-pointer"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <button
-              onClick={() => scrollToSection("#home")}
-              className="flex items-center group cursor-pointer"
-            >
-              <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl glow-effect">
-                  JR
-                </div>
-                <motion.div
-                  className="absolute inset-0 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 opacity-20"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.2, 0.4, 0.2],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-              </div>
-            </button>
-          </motion.div>
+            <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center text-white font-bold text-base">
+              JR
+            </div>
+            <span className="hidden sm:inline font-semibold text-foreground">
+              Jamil
+            </span>
+          </motion.button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {NAVIGATION_ITEMS.map((item, index) => (
-              <motion.div
+          <div className="hidden lg:flex items-center gap-8">
+            {NAVIGATION_ITEMS.map((item) => (
+              <motion.button
                 key={item.path}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 + 0.2 }}
+                onClick={() => scrollToSection(item.path)}
+                className={`nav-link text-sm font-medium ${
+                  isActive(item.path)
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                whileHover={{ y: -2 }}
               >
-                <button
-                  onClick={() => scrollToSection(item.path)}
-                  className={`nav-link text-slate-600 hover:text-indigo-600 transition-all duration-300 ${
-                    isActive(item.path)
-                      ? "active text-indigo-600 font-semibold"
-                      : ""
-                  }`}
-                >
-                  {item.label}
-                </button>
-              </motion.div>
+                {item.label}
+              </motion.button>
             ))}
-
-            {/* Social Links */}
-            <div className="flex items-center space-x-3 ml-6 border-l border-slate-200 pl-6">
-              <motion.a
-                href={SOCIAL_LINKS.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#181717] text-white hover:bg-black transition-all duration-300"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Github className="w-4 h-4" />
-              </motion.a>
-              <motion.a
-                href={SOCIAL_LINKS.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#0A66C2] text-white hover:bg-blue-700 transition-all duration-300"
-                whileHover={{ scale: 1.1, rotate: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Linkedin className="w-4 h-4" />
-              </motion.a>
-              <motion.a
-                href="/JamilUrRahmanCV.pdf"
-                download
-                className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-medium hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Download className="w-4 h-4" />
-                <span>CV</span>
-              </motion.a>
-            </div>
           </div>
 
-          {/* Mobile Menu */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden">
-                <motion.div
-                  animate={{ rotate: isOpen ? 90 : 0 }}
-                  transition={{ duration: 0.2 }}
+          {/* Right Actions */}
+          <div className="flex items-center gap-3">
+            {/* Theme Toggle */}
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg border border-border hover:bg-muted transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle theme"
+            >
+              {isDark ? (
+                <Sun className="w-5 h-5 text-yellow-500" />
+              ) : (
+                <Moon className="w-5 h-5 text-slate-600" />
+              )}
+            </motion.button>
+
+            {/* Social Links - Desktop */}
+            <motion.a
+              href={SOCIAL_LINKS.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex p-2 rounded-lg hover:bg-muted transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Github className="w-5 h-5" />
+            </motion.a>
+
+            <motion.a
+              href={SOCIAL_LINKS.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex p-2 rounded-lg hover:bg-muted transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Linkedin className="w-5 h-5" />
+            </motion.a>
+
+            {/* CV Button - Desktop */}
+            <motion.a
+              href="/JamilUrRahmanCV.pdf"
+              download
+              className="hidden sm:flex items-center gap-2 px-4 py-2 button-gradient rounded-lg text-sm font-medium"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Download className="w-4 h-4" />
+              CV
+            </motion.a>
+
+            {/* Mobile Menu */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild className="lg:hidden">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-lg"
                 >
                   <Menu className="h-5 w-5" />
-                </motion.div>
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="w-[320px] bg-white/95 backdrop-blur-xl border-l border-indigo-200"
-            >
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-center py-6 border-b border-indigo-100">
-                  <div className="text-center">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-2xl mx-auto mb-3 glow-effect">
-                      JR
-                    </div>
-                    <div className="font-semibold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-                      Jamil Ur Rahman
-                    </div>
-                    <div className="text-sm text-slate-600">
-                      Full-Stack Developer
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                className={`w-[320px] ${
+                  isDark
+                    ? "bg-card border-border"
+                    : "bg-background border-border"
+                }`}
+              >
+                <div className="flex flex-col h-full">
+                  <div className="py-6 border-b border-border">
+                    <div className="text-center">
+                      <div className="w-14 h-14 rounded-lg bg-gradient-primary flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
+                        JR
+                      </div>
+                      <div className="font-semibold text-foreground">
+                        Jamil Ur Rahman
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Full-Stack Developer
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <nav className="flex-1 py-8">
-                  <div className="space-y-4">
-                    {NAVIGATION_ITEMS.map((item, index) => (
-                      <motion.div
+                  <nav className="flex-1 py-6 space-y-2">
+                    {NAVIGATION_ITEMS.map((item) => (
+                      <button
                         key={item.path}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
+                        onClick={() => scrollToSection(item.path)}
+                        className={`w-full text-left py-2 px-4 rounded-lg transition-colors ${
+                          isActive(item.path)
+                            ? "bg-primary/10 text-primary font-medium"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        }`}
                       >
-                        <button
-                          onClick={() => scrollToSection(item.path)}
-                          className={`block w-full text-left py-3 px-4 rounded-xl transition-all duration-300 ${
-                            isActive(item.path)
-                              ? "bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 font-semibold"
-                              : "text-slate-600 hover:bg-slate-50 hover:text-indigo-600"
-                          }`}
-                        >
-                          {item.label}
-                        </button>
-                      </motion.div>
+                        {item.label}
+                      </button>
                     ))}
-                  </div>
-                </nav>
+                  </nav>
 
-                <div className="border-t border-indigo-100 pt-6 pb-4">
-                  <div className="flex justify-center space-x-4 mb-4">
+                  <div className="border-t border-border pt-6 space-y-4">
+                    <div className="flex justify-center gap-4">
+                      <a
+                        href={SOCIAL_LINKS.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg hover:bg-muted transition-colors"
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                      <a
+                        href={SOCIAL_LINKS.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg hover:bg-muted transition-colors"
+                      >
+                        <Linkedin className="w-5 h-5" />
+                      </a>
+                    </div>
                     <a
-                      href={SOCIAL_LINKS.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-[#181717] text-white hover:bg-black transition-all duration-300"
+                      href="/JamilUrRahmanCV.pdf"
+                      download
+                      className="w-full px-4 py-3 button-gradient rounded-lg font-medium text-center flex items-center justify-center gap-2"
                     >
-                      <Github className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={SOCIAL_LINKS.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-[#0A66C2] text-white hover:bg-blue-700 transition-all duration-300"
-                    >
-                      <Linkedin className="w-5 h-5" />
+                      <Download className="w-4 h-4" />
+                      <span>Download CV</span>
                     </a>
                   </div>
-                  <a
-                    href="/JamilUrRahmanCV.pdf"
-                    download
-                    className="w-full px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium text-center flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
-                  >
-                    <Download className="w-4 h-4" />
-                    <span>Download CV</span>
-                  </a>
                 </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </motion.nav>
